@@ -198,64 +198,57 @@ const defaults = {
 
 
 /*
- * The five editable values sit directly inside
- * the five profile cards in the banner.
- *
- * The background artwork already contains:
- * - icons
- * - arrows
- * - card borders
- * - field labels
- *
- * We only replace the text portion.
+ * Position of the editable text inside
+ * the five profile cards.
  */
-
 const slots = [
 
   {
     id: 'name',
-    x: 1087,
+    x: 1082,
     y: 198,
-    width: 58
+    width: 126
   },
 
   {
     id: 'username',
-    x: 1087,
+    x: 1082,
     y: 236,
-    width: 58
+    width: 126
   },
 
   {
     id: 'location',
-    x: 1087,
+    x: 1082,
     y: 275,
-    width: 58
+    width: 126
   },
 
   {
     id: 'country',
-    x: 1087,
+    x: 1082,
     y: 313,
-    width: 58
+    width: 126
   },
 
   {
     id: 'chapter',
-    x: 1087,
+    x: 1082,
     y: 351,
-    width: 58
+    width: 126
   }
 
 ];
 
 
 /*
- * Fit text into the available space.
+ * Fit the complete </VALUE> string
+ * inside the profile card.
  */
 function fitText(text, maxWidth) {
 
-  const font = '700 8px Arial, sans-serif';
+  const font =
+    '700 8px Arial, Helvetica, sans-serif';
 
   ctx.font = font;
 
@@ -267,24 +260,24 @@ function fitText(text, maxWidth) {
 
   while (
     value.length > 2 &&
-    ctx.measureText(value + '…').width > maxWidth
+    ctx.measureText('</' + value + '…>').width > maxWidth
   ) {
     value = value.slice(0, -1);
   }
 
-  return value + '…';
+  return value;
 }
 
 
 /*
- * Draw the complete banner.
+ * Draw the banner.
  */
 function draw() {
 
   ctx.clearRect(0, 0, 1500, 500);
 
   /*
-   * Draw original artwork.
+   * Original artwork.
    */
   ctx.drawImage(
     img,
@@ -295,58 +288,61 @@ function draw() {
   );
 
 
-  /*
-   * Replace the original field labels
-   * with the user's custom values.
-   */
   for (const slot of slots) {
 
-    const input = document.getElementById(slot.id);
+    const input =
+      document.getElementById(slot.id);
 
     const value =
       input.value.trim() || defaults[slot.id];
 
 
     /*
-     * Cover only the original label area.
+     * Create the requested code-style format.
      *
-     * Icons on the left and < > controls
-     * on the right remain untouched.
+     * Example:
+     * </ALI ÇINAR>
+     * </MALTO>
+     * </İZMİR>
+     */
+    const formatted =
+      '</' + fitText(value, slot.width - 8) + '>';
+
+
+    /*
+     * Remove the original text and the
+     * original < > symbols from the artwork.
+     *
+     * The icon on the left remains untouched.
      */
     ctx.fillStyle = '#ffffff';
 
     ctx.fillRect(
-      slot.x - 2,
-      slot.y - 8,
-      slot.width + 4,
-      16
+      slot.x - 4,
+      slot.y - 9,
+      slot.width + 8,
+      18
     );
 
 
     /*
      * Text styling.
-     *
-     * This matches the clean technical typography
-     * used by the banner much more closely.
      */
     ctx.font =
       '700 8px Arial, Helvetica, sans-serif';
 
-    ctx.fillStyle = '#182b54';
+    ctx.fillStyle =
+      '#182b54';
 
-    ctx.textBaseline = 'middle';
-
-    const text = fitText(
-      value,
-      slot.width
-    );
+    ctx.textBaseline =
+      'middle';
 
 
     /*
-     * Draw the value inside the card.
+     * Draw </VALUE>.
      */
     ctx.fillText(
-      text,
+      formatted,
       slot.x,
       slot.y
     );
@@ -363,7 +359,7 @@ img.onload = draw;
 
 
 /*
- * Update banner immediately while typing.
+ * Update banner while typing.
  */
 fields.forEach(id => {
 
@@ -375,7 +371,7 @@ fields.forEach(id => {
 
 
 /*
- * Download final 1500 × 500 PNG.
+ * Download final PNG.
  */
 document
   .getElementById('download')
@@ -396,7 +392,7 @@ document
 
 
 /*
- * Reset all fields.
+ * Reset.
  */
 document
   .getElementById('reset')
