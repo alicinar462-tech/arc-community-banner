@@ -7,10 +7,15 @@
 <title>Arc Community Banner — Customize</title>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap');
-
   :root {
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
   }
 
   body {
@@ -28,7 +33,6 @@
   h1 {
     margin: 0 0 6px;
     font-size: 28px;
-    font-weight: 800;
   }
 
   p {
@@ -66,7 +70,6 @@
     padding: 11px 12px;
     border: 1px solid #cbd3df;
     border-radius: 9px;
-    font-family: Inter, sans-serif;
     font-size: 14px;
     background: #fff;
     color: #18233b;
@@ -78,7 +81,6 @@
     border: 0;
     border-radius: 9px;
     padding: 12px;
-    font-family: Inter, sans-serif;
     font-weight: 800;
     cursor: pointer;
   }
@@ -124,8 +126,8 @@
   <h1>Arc Community Banner</h1>
 
   <p>
-    Fork the repository, personalize your profile information,
-    choose your country flag, then download your 1500 × 500 X/Twitter banner.
+    Fork the repository, personalize these fields,
+    then download your 1500 × 500 X/Twitter banner.
   </p>
 
   <div class="grid">
@@ -163,51 +165,128 @@
       <label for="country">COUNTRY FLAG</label>
 
       <select id="country">
-
-        <option value="TR">🇹🇷 Turkey</option>
-        <option value="US">🇺🇸 United States</option>
-        <option value="GB">🇬🇧 United Kingdom</option>
-        <option value="DE">🇩🇪 Germany</option>
-        <option value="FR">🇫🇷 France</option>
-        <option value="IT">🇮🇹 Italy</option>
-        <option value="ES">🇪🇸 Spain</option>
-        <option value="PT">🇵🇹 Portugal</option>
-        <option value="NL">🇳🇱 Netherlands</option>
-        <option value="BE">🇧🇪 Belgium</option>
-        <option value="CH">🇨🇭 Switzerland</option>
-        <option value="AT">🇦🇹 Austria</option>
-        <option value="SE">🇸🇪 Sweden</option>
-        <option value="NO">🇳🇴 Norway</option>
-        <option value="DK">🇩🇰 Denmark</option>
-        <option value="FI">🇫🇮 Finland</option>
-        <option value="PL">🇵🇱 Poland</option>
-        <option value="GR">🇬🇷 Greece</option>
-        <option value="RO">🇷🇴 Romania</option>
-        <option value="BG">🇧🇬 Bulgaria</option>
-        <option value="UA">🇺🇦 Ukraine</option>
-        <option value="RU">🇷🇺 Russia</option>
-        <option value="AE">🇦🇪 United Arab Emirates</option>
-        <option value="SA">🇸🇦 Saudi Arabia</option>
-        <option value="IL">🇮🇱 Israel</option>
-        <option value="IN">🇮🇳 India</option>
-        <option value="PK">🇵🇰 Pakistan</option>
-        <option value="BD">🇧🇩 Bangladesh</option>
-        <option value="CN">🇨🇳 China</option>
-        <option value="JP">🇯🇵 Japan</option>
-        <option value="KR">🇰🇷 South Korea</option>
-        <option value="SG">🇸🇬 Singapore</option>
-        <option value="ID">🇮🇩 Indonesia</option>
-        <option value="MY">🇲🇾 Malaysia</option>
-        <option value="TH">🇹🇭 Thailand</option>
-        <option value="VN">🇻🇳 Vietnam</option>
-        <option value="PH">🇵🇭 Philippines</option>
-        <option value="AU">🇦🇺 Australia</option>
-        <option value="NZ">🇳🇿 New Zealand</option>
-        <option value="BR">🇧🇷 Brazil</option>
-        <option value="AR">🇦🇷 Argentina</option>
-        <option value="MX">🇲🇽 Mexico</option>
-        <option value="CA">🇨🇦 Canada</option>
-
+        <option value="">No flag</option>
+        <option value="🇦🇫">Afghanistan 🇦🇫</option>
+        <option value="🇦🇱">Albania 🇦🇱</option>
+        <option value="🇩🇿">Algeria 🇩🇿</option>
+        <option value="🇦🇩">Andorra 🇦🇩</option>
+        <option value="🇦🇴">Angola 🇦🇴</option>
+        <option value="🇦🇷">Argentina 🇦🇷</option>
+        <option value="🇦🇲">Armenia 🇦🇲</option>
+        <option value="🇦🇺">Australia 🇦🇺</option>
+        <option value="🇦🇹">Austria 🇦🇹</option>
+        <option value="🇦🇿">Azerbaijan 🇦🇿</option>
+        <option value="🇧🇸">Bahamas 🇧🇸</option>
+        <option value="🇧🇭">Bahrain 🇧🇭</option>
+        <option value="🇧🇩">Bangladesh 🇧🇩</option>
+        <option value="🇧🇧">Barbados 🇧🇧</option>
+        <option value="🇧🇾">Belarus 🇧🇾</option>
+        <option value="🇧🇪">Belgium 🇧🇪</option>
+        <option value="🇧🇿">Belize 🇧🇿</option>
+        <option value="🇧🇯">Benin 🇧🇯</option>
+        <option value="🇧🇹">Bhutan 🇧🇹</option>
+        <option value="🇧🇴">Bolivia 🇧🇴</option>
+        <option value="🇧🇦">Bosnia and Herzegovina 🇧🇦</option>
+        <option value="🇧🇼">Botswana 🇧🇼</option>
+        <option value="🇧🇷">Brazil 🇧🇷</option>
+        <option value="🇧🇳">Brunei 🇧🇳</option>
+        <option value="🇧🇬">Bulgaria 🇧🇬</option>
+        <option value="🇧🇫">Burkina Faso 🇧🇫</option>
+        <option value="🇧🇮">Burundi 🇧🇮</option>
+        <option value="🇰🇭">Cambodia 🇰🇭</option>
+        <option value="🇨🇲">Cameroon 🇨🇲</option>
+        <option value="🇨🇦">Canada 🇨🇦</option>
+        <option value="🇨🇱">Chile 🇨🇱</option>
+        <option value="🇨🇳">China 🇨🇳</option>
+        <option value="🇨🇴">Colombia 🇨🇴</option>
+        <option value="🇨🇷">Costa Rica 🇨🇷</option>
+        <option value="🇭🇷">Croatia 🇭🇷</option>
+        <option value="🇨🇺">Cuba 🇨🇺</option>
+        <option value="🇨🇾">Cyprus 🇨🇾</option>
+        <option value="🇨🇿">Czech Republic 🇨🇿</option>
+        <option value="🇩🇰">Denmark 🇩🇰</option>
+        <option value="🇩🇴">Dominican Republic 🇩🇴</option>
+        <option value="🇪🇨">Ecuador 🇪🇨</option>
+        <option value="🇪🇬">Egypt 🇪🇬</option>
+        <option value="🇸🇻">El Salvador 🇸🇻</option>
+        <option value="🇪🇪">Estonia 🇪🇪</option>
+        <option value="🇪🇹">Ethiopia 🇪🇹</option>
+        <option value="🇫🇮">Finland 🇫🇮</option>
+        <option value="🇫🇷">France 🇫🇷</option>
+        <option value="🇬🇪">Georgia 🇬🇪</option>
+        <option value="🇩🇪">Germany 🇩🇪</option>
+        <option value="🇬🇭">Ghana 🇬🇭</option>
+        <option value="🇬🇷">Greece 🇬🇷</option>
+        <option value="🇬🇹">Guatemala 🇬🇹</option>
+        <option value="🇭🇳">Honduras 🇭🇳</option>
+        <option value="🇭🇺">Hungary 🇭🇺</option>
+        <option value="🇮🇸">Iceland 🇮🇸</option>
+        <option value="🇮🇳">India 🇮🇳</option>
+        <option value="🇮🇩">Indonesia 🇮🇩</option>
+        <option value="🇮🇷">Iran 🇮🇷</option>
+        <option value="🇮🇶">Iraq 🇮🇶</option>
+        <option value="🇮🇪">Ireland 🇮🇪</option>
+        <option value="🇮🇱">Israel 🇮🇱</option>
+        <option value="🇮🇹">Italy 🇮🇹</option>
+        <option value="🇯🇵">Japan 🇯🇵</option>
+        <option value="🇯🇴">Jordan 🇯🇴</option>
+        <option value="🇰🇿">Kazakhstan 🇰🇿</option>
+        <option value="🇰🇪">Kenya 🇰🇪</option>
+        <option value="🇰🇷">South Korea 🇰🇷</option>
+        <option value="🇰🇼">Kuwait 🇰🇼</option>
+        <option value="🇰🇬">Kyrgyzstan 🇰🇬</option>
+        <option value="🇱🇻">Latvia 🇱🇻</option>
+        <option value="🇱🇧">Lebanon 🇱🇧</option>
+        <option value="🇱🇹">Lithuania 🇱🇹</option>
+        <option value="🇱🇺">Luxembourg 🇱🇺</option>
+        <option value="🇲🇾">Malaysia 🇲🇾</option>
+        <option value="🇲🇹">Malta 🇲🇹</option>
+        <option value="🇲🇽">Mexico 🇲🇽</option>
+        <option value="🇲🇩">Moldova 🇲🇩</option>
+        <option value="🇲🇨">Monaco 🇲🇨</option>
+        <option value="🇲🇳">Mongolia 🇲🇳</option>
+        <option value="🇲🇪">Montenegro 🇲🇪</option>
+        <option value="🇲🇦">Morocco 🇲🇦</option>
+        <option value="🇳🇵">Nepal 🇳🇵</option>
+        <option value="🇳🇱">Netherlands 🇳🇱</option>
+        <option value="🇳🇿">New Zealand 🇳🇿</option>
+        <option value="🇳🇬">Nigeria 🇳🇬</option>
+        <option value="🇲🇰">North Macedonia 🇲🇰</option>
+        <option value="🇳🇴">Norway 🇳🇴</option>
+        <option value="🇴🇲">Oman 🇴🇲</option>
+        <option value="🇵🇰">Pakistan 🇵🇰</option>
+        <option value="🇵🇦">Panama 🇵🇦</option>
+        <option value="🇵🇾">Paraguay 🇵🇾</option>
+        <option value="🇵🇪">Peru 🇵🇪</option>
+        <option value="🇵🇭">Philippines 🇵🇭</option>
+        <option value="🇵🇱">Poland 🇵🇱</option>
+        <option value="🇵🇹">Portugal 🇵🇹</option>
+        <option value="🇶🇦">Qatar 🇶🇦</option>
+        <option value="🇷🇴">Romania 🇷🇴</option>
+        <option value="🇷🇺">Russia 🇷🇺</option>
+        <option value="🇸🇦">Saudi Arabia 🇸🇦</option>
+        <option value="🇷🇸">Serbia 🇷🇸</option>
+        <option value="🇸🇬">Singapore 🇸🇬</option>
+        <option value="🇸🇰">Slovakia 🇸🇰</option>
+        <option value="🇸🇮">Slovenia 🇸🇮</option>
+        <option value="🇿🇦">South Africa 🇿🇦</option>
+        <option value="🇪🇸">Spain 🇪🇸</option>
+        <option value="🇱🇰">Sri Lanka 🇱🇰</option>
+        <option value="🇸🇪">Sweden 🇸🇪</option>
+        <option value="🇨🇭">Switzerland 🇨🇭</option>
+        <option value="🇹🇼">Taiwan 🇹🇼</option>
+        <option value="🇹🇭">Thailand 🇹🇭</option>
+        <option value="🇹🇳">Tunisia 🇹🇳</option>
+        <option value="🇹🇷">Türkiye 🇹🇷</option>
+        <option value="🇺🇦">Ukraine 🇺🇦</option>
+        <option value="🇦🇪">United Arab Emirates 🇦🇪</option>
+        <option value="🇬🇧">United Kingdom 🇬🇧</option>
+        <option value="🇺🇸">United States 🇺🇸</option>
+        <option value="🇺🇾">Uruguay 🇺🇾</option>
+        <option value="🇺🇿">Uzbekistan 🇺🇿</option>
+        <option value="🇻🇪">Venezuela 🇻🇪</option>
+        <option value="🇻🇳">Vietnam 🇻🇳</option>
+        <option value="🇿🇼">Zimbabwe 🇿🇼</option>
       </select>
 
       <button id="download">
@@ -219,526 +298,340 @@
       </button>
 
       <div class="hint">
-        Your personal information is rendered directly onto the banner.
-        The country selection is used only to display the flag next to your chapter.
+        The artwork remains fixed. Only your personal/community
+        fields are editable.
       </div>
 
     </section>
 
     <section class="panel">
-
       <canvas
         id="canvas"
         width="1500"
         height="500"
       ></canvas>
-
     </section>
 
   </div>
-
 </div>
 
 <script>
 
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
 const img = new Image();
 
-img.src = 'assets/banner-base.png';
+img.src = "assets/banner-base.png";
 
 const fields = [
-  'name',
-  'username',
-  'location',
-  'chapter',
-  'country'
+  "name",
+  "username",
+  "location",
+  "chapter",
+  "country"
 ];
 
 const defaults = {
-  name: 'YOUR NAME',
-  username: '@YOUR_USERNAME',
-  location: 'YOUR CITY',
-  chapter: 'YOUR CHAPTER',
-  country: 'TR'
+  name: "YOUR NAME",
+  username: "@YOUR_USERNAME",
+  location: "YOUR CITY",
+  chapter: "YOUR CHAPTER",
+  country: ""
 };
 
 
-/* -------------------------------------------------------
-   FONT
-------------------------------------------------------- */
+/*
+=========================================================
+BANNER COORDINATES
+=========================================================
+
+These coordinates correspond to the current
+1500 × 500 banner.
+
+The right-side cards are:
+
+NAME
+USERNAME
+LOCATION
+CHAPTER
+
+Country card has been removed.
+*/
+
+
+const slots = {
+
+  name: {
+    x: 1375,
+    y: 245,
+    maxWidth: 105
+  },
+
+  username: {
+    x: 1375,
+    y: 288,
+    maxWidth: 105
+  },
+
+  location: {
+    x: 1375,
+    y: 332,
+    maxWidth: 105
+  },
+
+  chapter: {
+    x: 1375,
+    y: 376,
+    maxWidth: 105
+  }
+
+};
+
+
+/*
+=========================================================
+FONT
+=========================================================
+*/
 
 const FONT_FAMILY =
-  'Inter, "Segoe UI", system-ui, sans-serif';
+  '"Arial", "Helvetica Neue", sans-serif';
 
 
-/* -------------------------------------------------------
-   FLAG COLORS
-------------------------------------------------------- */
+/*
+=========================================================
+TEXT FIT
+=========================================================
+*/
 
-const FLAGS = {
+function fitText(text, maxWidth, baseSize) {
 
-  TR: [
-    '#E30A17',
-    '#FFFFFF'
-  ],
+  let size = baseSize;
 
-  US: [
-    '#B22234',
-    '#FFFFFF',
-    '#3C3B6E'
-  ],
-
-  GB: [
-    '#012169',
-    '#FFFFFF',
-    '#C8102E'
-  ],
-
-  DE: [
-    '#000000',
-    '#DD0000',
-    '#FFCE00'
-  ],
-
-  FR: [
-    '#0055A4',
-    '#FFFFFF',
-    '#EF4135'
-  ],
-
-  IT: [
-    '#009246',
-    '#FFFFFF',
-    '#CE2B37'
-  ],
-
-  ES: [
-    '#AA151B',
-    '#F1BF00',
-    '#AA151B'
-  ],
-
-  NL: [
-    '#AE1C28',
-    '#FFFFFF',
-    '#21468B'
-  ],
-
-  BE: [
-    '#000000',
-    '#FAE042',
-    '#ED2939'
-  ],
-
-  CH: [
-    '#D52B1E',
-    '#FFFFFF'
-  ],
-
-  AT: [
-    '#ED2939',
-    '#FFFFFF',
-    '#ED2939'
-  ],
-
-  SE: [
-    '#006AA7',
-    '#FECC00'
-  ],
-
-  NO: [
-    '#BA0C2F',
-    '#FFFFFF',
-    '#00205B'
-  ],
-
-  DK: [
-    '#C60C30',
-    '#FFFFFF'
-  ],
-
-  FI: [
-    '#FFFFFF',
-    '#003580'
-  ],
-
-  PL: [
-    '#FFFFFF',
-    '#DC143C'
-  ],
-
-  GR: [
-    '#0D5EAF',
-    '#FFFFFF'
-  ],
-
-  RO: [
-    '#002B7F',
-    '#FCD116',
-    '#CE1126'
-  ],
-
-  BG: [
-    '#FFFFFF',
-    '#00966E',
-    '#D62612'
-  ],
-
-  UA: [
-    '#0057B7',
-    '#FFD700'
-  ],
-
-  RU: [
-    '#FFFFFF',
-    '#0039A6',
-    '#D52B1E'
-  ],
-
-  AE: [
-    '#00732F',
-    '#FFFFFF',
-    '#000000',
-    '#FF0000'
-  ],
-
-  SA: [
-    '#006C35',
-    '#FFFFFF'
-  ],
-
-  IL: [
-    '#FFFFFF',
-    '#0038B8'
-  ],
-
-  IN: [
-    '#FF9933',
-    '#FFFFFF',
-    '#138808'
-  ],
-
-  CN: [
-    '#DE2910',
-    '#FFDE00'
-  ],
-
-  JP: [
-    '#FFFFFF',
-    '#BC002D'
-  ],
-
-  KR: [
-    '#FFFFFF',
-    '#CD2E3A',
-    '#0F64CD'
-  ],
-
-  SG: [
-    '#EF3340',
-    '#FFFFFF'
-  ],
-
-  ID: [
-    '#CE1126',
-    '#FFFFFF'
-  ],
-
-  MY: [
-    '#CC0001',
-    '#FFFFFF',
-    '#010066'
-  ],
-
-  TH: [
-    '#A51931',
-    '#FFFFFF',
-    '#2D2A4A'
-  ],
-
-  VN: [
-    '#DA251D',
-    '#FFFF00'
-  ],
-
-  PH: [
-    '#0038A8',
-    '#CE1126',
-    '#FFFFFF'
-  ],
-
-  AU: [
-    '#00008B',
-    '#FFFFFF'
-  ],
-
-  NZ: [
-    '#00247D',
-    '#FFFFFF',
-    '#CC142B'
-  ],
-
-  BR: [
-    '#009C3B',
-    '#FFDF00',
-    '#002776'
-  ],
-
-  AR: [
-    '#74ACDF',
-    '#FFFFFF'
-  ],
-
-  MX: [
-    '#006847',
-    '#FFFFFF',
-    '#CE1126'
-  ],
-
-  CA: [
-    '#FF0000',
-    '#FFFFFF'
-  ]
-
-};
-
-
-/* -------------------------------------------------------
-   FLAG DRAWING
-------------------------------------------------------- */
-
-function drawFlag(code, x, y, width = 30, height = 20) {
-
-  const colors = FLAGS[code] || ['#182b54', '#ffffff'];
-
-  ctx.save();
-
-  /*
-   * Rounded flag container
-   */
-  ctx.beginPath();
-
-  const radius = 3;
-
-  ctx.roundRect(
-    x,
-    y,
-    width,
-    height,
-    radius
-  );
-
-  ctx.clip();
-
-  /*
-   * Most flags are represented using horizontal
-   * color bands. This keeps the PNG self-contained.
-   */
-  const bandHeight = height / colors.length;
-
-  colors.forEach((color, index) => {
-
-    ctx.fillStyle = color;
-
-    ctx.fillRect(
-      x,
-      y + index * bandHeight,
-      width,
-      bandHeight + 1
-    );
-
-  });
-
-  /*
-   * Special vertical flags
-   */
-
-  if (
-    ['FR','IT','BE','RO','MX'].includes(code)
-  ) {
-
-    ctx.clearRect(x, y, width, height);
-
-    const bandWidth = width / 3;
-
-    colors.slice(0,3).forEach((color,index) => {
-
-      ctx.fillStyle = color;
-
-      ctx.fillRect(
-        x + index * bandWidth,
-        y,
-        bandWidth + 1,
-        height
-      );
-
-    });
-
-  }
-
-  /*
-   * Simple Japanese / Korean / Turkish markers
-   */
-
-  if (code === 'JP') {
-
-    ctx.fillStyle = '#BC002D';
-
-    ctx.beginPath();
-
-    ctx.arc(
-      x + width / 2,
-      y + height / 2,
-      height * .28,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.fill();
-
-  }
-
-  if (code === 'TR') {
-
-    ctx.fillStyle = '#FFFFFF';
-
-    ctx.beginPath();
-
-    ctx.arc(
-      x + width * .43,
-      y + height / 2,
-      height * .27,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.fill();
-
-    ctx.fillStyle = '#E30A17';
-
-    ctx.beginPath();
-
-    ctx.arc(
-      x + width * .49,
-      y + height / 2,
-      height * .21,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.fill();
-
-    /*
-     * Crescent tip
-     */
-
-    ctx.fillStyle = '#FFFFFF';
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      x + width * .66,
-      y + height * .5
-    );
-
-    ctx.lineTo(
-      x + width * .53,
-      y + height * .36
-    );
-
-    ctx.lineTo(
-      x + width * .53,
-      y + height * .64
-    );
-
-    ctx.closePath();
-
-    ctx.fill();
-
-  }
-
-  ctx.restore();
-
-}
-
-
-/* -------------------------------------------------------
-   TEXT FITTING
-------------------------------------------------------- */
-
-function fitFont(
-  text,
-  maxWidth,
-  startSize = 14,
-  minSize = 8
-) {
-
-  let size = startSize;
-
-  while (size > minSize) {
+  while (size >= 9) {
 
     ctx.font =
-      `700 ${size}px ${FONT_FAMILY}`;
+      `800 ${size}px ${FONT_FAMILY}`;
 
     if (
       ctx.measureText(text).width <= maxWidth
     ) {
-
-      return size;
-
+      return {
+        text,
+        size
+      };
     }
 
     size -= 0.5;
-
   }
 
-  return minSize;
+  ctx.font =
+    `800 9px ${FONT_FAMILY}`;
 
+  let shortened = text;
+
+  while (
+    shortened.length > 3 &&
+    ctx.measureText(shortened + "…").width > maxWidth
+  ) {
+    shortened =
+      shortened.slice(0, -1);
+  }
+
+  return {
+    text: shortened + "…",
+    size: 9
+  };
 }
 
 
-/* -------------------------------------------------------
-   CENTERED TEXT
-------------------------------------------------------- */
+/*
+=========================================================
+DRAW BASE IMAGE
+=========================================================
 
-function drawCenteredText(
-  text,
-  x,
-  y,
-  width,
-  startSize = 14,
-  minSize = 8
-) {
+IMPORTANT:
 
-  const size = fitFont(
-    text,
-    width,
-    startSize,
-    minSize
+The image is fitted proportionally.
+It is NOT stretched independently in X/Y.
+*/
+
+
+function drawBaseImage() {
+
+  const canvasRatio =
+    canvas.width / canvas.height;
+
+  const imageRatio =
+    img.width / img.height;
+
+  let drawWidth;
+  let drawHeight;
+  let offsetX;
+  let offsetY;
+
+  if (imageRatio > canvasRatio) {
+
+    drawHeight = canvas.height;
+
+    drawWidth =
+      drawHeight * imageRatio;
+
+    offsetX =
+      (canvas.width - drawWidth) / 2;
+
+    offsetY = 0;
+
+  } else {
+
+    drawWidth = canvas.width;
+
+    drawHeight =
+      drawWidth / imageRatio;
+
+    offsetX = 0;
+
+    offsetY =
+      (canvas.height - drawHeight) / 2;
+  }
+
+  ctx.drawImage(
+    img,
+    offsetX,
+    offsetY,
+    drawWidth,
+    drawHeight
   );
+}
+
+
+/*
+=========================================================
+NORMALIZE USERNAME
+=========================================================
+*/
+
+function normalizeUsername(value) {
+
+  value = value.trim();
+
+  if (!value) {
+    return defaults.username;
+  }
+
+  if (!value.startsWith("@")) {
+    value = "@" + value;
+  }
+
+  return value;
+}
+
+
+/*
+=========================================================
+DRAW FIELD
+=========================================================
+*/
+
+function drawField(id) {
+
+  const slot = slots[id];
+
+  if (!slot) return;
+
+  let value =
+    document.getElementById(id).value.trim();
+
+  if (!value) {
+    value = defaults[id];
+  }
+
+  if (id === "username") {
+    value = normalizeUsername(value);
+  }
+
+
+  /*
+  -------------------------------------------------------
+  Text styling
+  -------------------------------------------------------
+  */
+
+  const fitted =
+    fitText(
+      value,
+      slot.maxWidth,
+      14
+    );
 
   ctx.font =
-    `700 ${size}px ${FONT_FAMILY}`;
+    `800 ${fitted.size}px ${FONT_FAMILY}`;
 
-  ctx.fillStyle = '#182b54';
+  ctx.fillStyle =
+    "#182b54";
 
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
+  ctx.textBaseline =
+    "middle";
+
+  ctx.textAlign =
+    "left";
+
+
+  /*
+  -------------------------------------------------------
+  Draw text
+  -------------------------------------------------------
+  */
 
   ctx.fillText(
-    text,
-    x + width / 2,
-    y
+    fitted.text,
+    slot.x,
+    slot.y
   );
-
 }
 
 
-/* -------------------------------------------------------
-   MAIN DRAW
-------------------------------------------------------- */
+/*
+=========================================================
+DRAW FLAG
+=========================================================
+*/
+
+function drawFlag() {
+
+  const country =
+    document.getElementById("country").value;
+
+  if (!country) return;
+
+
+  /*
+  Flag is placed at the right side of CHAPTER card.
+  */
+
+  ctx.font =
+    "800 20px Arial, sans-serif";
+
+  ctx.textAlign =
+    "left";
+
+  ctx.textBaseline =
+    "middle";
+
+  ctx.fillText(
+    country,
+    1470,
+    slots.chapter.y
+  );
+}
+
+
+/*
+=========================================================
+MAIN DRAW
+=========================================================
+*/
 
 function draw() {
 
@@ -749,253 +642,129 @@ function draw() {
     canvas.height
   );
 
+
   /*
-   * Background banner
-   */
+  Base banner
+  */
 
-  if (img.complete) {
+  if (img.complete && img.naturalWidth) {
 
-    ctx.drawImage(
-      img,
+    drawBaseImage();
+
+  } else {
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.fillRect(
       0,
       0,
       canvas.width,
       canvas.height
     );
-
   }
 
 
   /*
-   * RIGHT-SIDE PROFILE BOXES
-   *
-   * These coordinates are intentionally inside
-   * the empty value area of the new artwork.
-   */
+  Personal fields
+  */
 
-  const slots = {
+  drawField("name");
 
-    name: {
-      x: 1235,
-      y: 394,
-      width: 225
-    },
+  drawField("username");
 
-    username: {
-      x: 1235,
-      y: 454,
-      width: 225
-    },
+  drawField("location");
 
-    location: {
-      x: 1235,
-      y: 523,
-      width: 225
-    },
+  drawField("chapter");
 
-    chapter: {
-      x: 1235,
-      y: 595,
-      width: 225
-    }
-
-  };
-
-
-  /*
-   * Values
-   */
-
-  const name =
-    document.getElementById('name').value.trim()
-    || defaults.name;
-
-  const username =
-    document.getElementById('username').value.trim()
-    || defaults.username;
-
-  const location =
-    document.getElementById('location').value.trim()
-    || defaults.location;
-
-  const chapter =
-    document.getElementById('chapter').value.trim()
-    || defaults.chapter;
-
-  const country =
-    document.getElementById('country').value
-    || defaults.country;
-
-
-  /*
-   * Render profile values
-   */
-
-  drawCenteredText(
-    name,
-    slots.name.x,
-    slots.name.y,
-    slots.name.width,
-    16,
-    9
-  );
-
-
-  drawCenteredText(
-    username,
-    slots.username.x,
-    slots.username.y,
-    slots.username.width,
-    15,
-    9
-  );
-
-
-  drawCenteredText(
-    location,
-    slots.location.x,
-    slots.location.y,
-    slots.location.width,
-    15,
-    9
-  );
-
-
-  /*
-   * CHAPTER
-   *
-   * Text + country flag
-   */
-
-  const chapterFontSize =
-    fitFont(
-      chapter,
-      180,
-      15,
-      9
-    );
-
-  ctx.font =
-    `700 ${chapterFontSize}px ${FONT_FAMILY}`;
-
-  const chapterWidth =
-    ctx.measureText(chapter).width;
-
-  const flagWidth = 30;
-  const gap = 9;
-
-  const totalWidth =
-    chapterWidth +
-    gap +
-    flagWidth;
-
-
-  /*
-   * Center chapter + flag as a group
-   */
-
-  const startX =
-    slots.chapter.x +
-    (slots.chapter.width - totalWidth) / 2;
-
-
-  ctx.fillStyle = '#182b54';
-
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'middle';
-
-  ctx.fillText(
-    chapter,
-    startX,
-    slots.chapter.y
-  );
-
-
-  drawFlag(
-    country,
-    startX + chapterWidth + gap,
-    slots.chapter.y - 10,
-    30,
-    20
-  );
-
+  drawFlag();
 }
 
 
-/* -------------------------------------------------------
-   EVENTS
-------------------------------------------------------- */
+/*
+=========================================================
+IMAGE LOAD
+=========================================================
+*/
 
-img.onload = draw;
+img.onload = () => {
+
+  draw();
+
+};
+
+
+/*
+=========================================================
+LIVE UPDATE
+=========================================================
+*/
 
 fields.forEach(id => {
 
-  document
-    .getElementById(id)
-    .addEventListener(
-      'input',
-      draw
-    );
+  const element =
+    document.getElementById(id);
 
-  document
-    .getElementById(id)
-    .addEventListener(
-      'change',
-      draw
-    );
+  element.addEventListener(
+    "input",
+    draw
+  );
+
+  element.addEventListener(
+    "change",
+    draw
+  );
 
 });
 
 
-/* -------------------------------------------------------
-   DOWNLOAD
-------------------------------------------------------- */
+/*
+=========================================================
+DOWNLOAD
+=========================================================
+*/
 
 document
-  .getElementById('download')
-  .addEventListener('click', () => {
+  .getElementById("download")
+  .addEventListener("click", () => {
 
-    const a =
-      document.createElement('a');
+    const link =
+      document.createElement("a");
 
-    a.download =
-      'arc-community-banner-1500x500.png';
+    link.download =
+      "arc-community-banner-1500x500.png";
 
-    a.href =
-      canvas.toDataURL('image/png');
+    link.href =
+      canvas.toDataURL("image/png");
 
-    a.click();
+    link.click();
 
   });
 
 
-/* -------------------------------------------------------
-   RESET
-------------------------------------------------------- */
+/*
+=========================================================
+RESET
+=========================================================
+*/
 
 document
-  .getElementById('reset')
-  .addEventListener('click', () => {
+  .getElementById("reset")
+  .addEventListener("click", () => {
 
-    document
-      .getElementById('name')
-      .value = defaults.name;
+    document.getElementById("name").value =
+      defaults.name;
 
-    document
-      .getElementById('username')
-      .value = defaults.username;
+    document.getElementById("username").value =
+      defaults.username;
 
-    document
-      .getElementById('location')
-      .value = defaults.location;
+    document.getElementById("location").value =
+      defaults.location;
 
-    document
-      .getElementById('chapter')
-      .value = defaults.chapter;
+    document.getElementById("chapter").value =
+      defaults.chapter;
 
-    document
-      .getElementById('country')
-      .value = defaults.country;
+    document.getElementById("country").value =
+      defaults.country;
 
     draw();
 
