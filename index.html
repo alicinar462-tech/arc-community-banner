@@ -3,19 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Arc Community Banner — Customize</title>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap');
+
   :root {
-    font-family:
-      Inter,
-      ui-sans-serif,
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Arial,
-      sans-serif;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   }
 
   body {
@@ -33,6 +28,7 @@
   h1 {
     margin: 0 0 6px;
     font-size: 28px;
+    font-weight: 800;
   }
 
   p {
@@ -58,24 +54,22 @@
   label {
     display: block;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: .05em;
     margin: 14px 0 6px;
   }
 
-  input {
+  input,
+  select {
     width: 100%;
     box-sizing: border-box;
     padding: 11px 12px;
     border: 1px solid #cbd3df;
     border-radius: 9px;
+    font-family: Inter, sans-serif;
     font-size: 14px;
-    outline: none;
-  }
-
-  input:focus {
-    border-color: #6574d8;
-    box-shadow: 0 0 0 3px rgba(101,116,216,.12);
+    background: #fff;
+    color: #18233b;
   }
 
   button {
@@ -84,6 +78,7 @@
     border: 0;
     border-radius: 9px;
     padding: 12px;
+    font-family: Inter, sans-serif;
     font-weight: 800;
     cursor: pointer;
   }
@@ -129,8 +124,8 @@
   <h1>Arc Community Banner</h1>
 
   <p>
-    Fork the repository, personalize these fields, then download your
-    1500 × 500 X/Twitter banner.
+    Fork the repository, personalize your profile information,
+    choose your country flag, then download your 1500 × 500 X/Twitter banner.
   </p>
 
   <div class="grid">
@@ -138,19 +133,82 @@
     <section class="panel">
 
       <label for="name">NAME</label>
-      <input id="name" value="YOUR NAME">
+      <input
+        id="name"
+        value="YOUR NAME"
+        maxlength="32"
+      >
 
       <label for="username">USERNAME</label>
-      <input id="username" value="@YOUR_USERNAME">
+      <input
+        id="username"
+        value="@YOUR_USERNAME"
+        maxlength="32"
+      >
 
       <label for="location">LOCATION</label>
-      <input id="location" value="YOUR CITY">
-
-      <label for="country">COUNTRY</label>
-      <input id="country" value="YOUR COUNTRY">
+      <input
+        id="location"
+        value="YOUR CITY"
+        maxlength="28"
+      >
 
       <label for="chapter">CHAPTER</label>
-      <input id="chapter" value="YOUR CHAPTER">
+      <input
+        id="chapter"
+        value="YOUR CHAPTER"
+        maxlength="28"
+      >
+
+      <label for="country">COUNTRY FLAG</label>
+
+      <select id="country">
+
+        <option value="TR">🇹🇷 Turkey</option>
+        <option value="US">🇺🇸 United States</option>
+        <option value="GB">🇬🇧 United Kingdom</option>
+        <option value="DE">🇩🇪 Germany</option>
+        <option value="FR">🇫🇷 France</option>
+        <option value="IT">🇮🇹 Italy</option>
+        <option value="ES">🇪🇸 Spain</option>
+        <option value="PT">🇵🇹 Portugal</option>
+        <option value="NL">🇳🇱 Netherlands</option>
+        <option value="BE">🇧🇪 Belgium</option>
+        <option value="CH">🇨🇭 Switzerland</option>
+        <option value="AT">🇦🇹 Austria</option>
+        <option value="SE">🇸🇪 Sweden</option>
+        <option value="NO">🇳🇴 Norway</option>
+        <option value="DK">🇩🇰 Denmark</option>
+        <option value="FI">🇫🇮 Finland</option>
+        <option value="PL">🇵🇱 Poland</option>
+        <option value="GR">🇬🇷 Greece</option>
+        <option value="RO">🇷🇴 Romania</option>
+        <option value="BG">🇧🇬 Bulgaria</option>
+        <option value="UA">🇺🇦 Ukraine</option>
+        <option value="RU">🇷🇺 Russia</option>
+        <option value="AE">🇦🇪 United Arab Emirates</option>
+        <option value="SA">🇸🇦 Saudi Arabia</option>
+        <option value="IL">🇮🇱 Israel</option>
+        <option value="IN">🇮🇳 India</option>
+        <option value="PK">🇵🇰 Pakistan</option>
+        <option value="BD">🇧🇩 Bangladesh</option>
+        <option value="CN">🇨🇳 China</option>
+        <option value="JP">🇯🇵 Japan</option>
+        <option value="KR">🇰🇷 South Korea</option>
+        <option value="SG">🇸🇬 Singapore</option>
+        <option value="ID">🇮🇩 Indonesia</option>
+        <option value="MY">🇲🇾 Malaysia</option>
+        <option value="TH">🇹🇭 Thailand</option>
+        <option value="VN">🇻🇳 Vietnam</option>
+        <option value="PH">🇵🇭 Philippines</option>
+        <option value="AU">🇦🇺 Australia</option>
+        <option value="NZ">🇳🇿 New Zealand</option>
+        <option value="BR">🇧🇷 Brazil</option>
+        <option value="AR">🇦🇷 Argentina</option>
+        <option value="MX">🇲🇽 Mexico</option>
+        <option value="CA">🇨🇦 Canada</option>
+
+      </select>
 
       <button id="download">
         DOWNLOAD 1500 × 500 PNG
@@ -161,190 +219,529 @@
       </button>
 
       <div class="hint">
-        The artwork remains fixed; only your personal and community fields
-        are editable. The avatar area remains open for X/Twitter's profile
-        image.
+        Your personal information is rendered directly onto the banner.
+        The country selection is used only to display the flag next to your chapter.
       </div>
 
     </section>
 
     <section class="panel">
-      <canvas id="canvas" width="1500" height="500"></canvas>
+
+      <canvas
+        id="canvas"
+        width="1500"
+        height="500"
+      ></canvas>
+
     </section>
 
   </div>
-</div>
 
+</div>
 
 <script>
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
 const img = new Image();
 
-img.src = "assets/banner-base.png";
-
+img.src = 'assets/banner-base.png';
 
 const fields = [
-  "name",
-  "username",
-  "location",
-  "country",
-  "chapter"
+  'name',
+  'username',
+  'location',
+  'chapter',
+  'country'
 ];
 
-
 const defaults = {
-  name: "YOUR NAME",
-  username: "@YOUR_USERNAME",
-  location: "YOUR CITY",
-  country: "YOUR COUNTRY",
-  chapter: "YOUR CHAPTER"
+  name: 'YOUR NAME',
+  username: '@YOUR_USERNAME',
+  location: 'YOUR CITY',
+  chapter: 'YOUR CHAPTER',
+  country: 'TR'
 };
 
 
-/*
-  ---------------------------------------------------------
-  TEXT CONFIGURATION
-  ---------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   FONT
+------------------------------------------------------- */
 
-const slots = [
+const FONT_FAMILY =
+  'Inter, "Segoe UI", system-ui, sans-serif';
 
-  {
-    id: "name",
 
-    /*
-      Position of the actual user value inside
-      the NAME card.
-    */
-    x: 1095,
-    y: 198,
+/* -------------------------------------------------------
+   FLAG COLORS
+------------------------------------------------------- */
 
-    /*
-      Maximum available width before
-      the text begins to shrink.
-    */
-    max: 105,
+const FLAGS = {
 
-    size: 15
-  },
+  TR: [
+    '#E30A17',
+    '#FFFFFF'
+  ],
 
-  {
-    id: "username",
-    x: 1095,
-    y: 237,
-    max: 105,
-    size: 13
-  },
+  US: [
+    '#B22234',
+    '#FFFFFF',
+    '#3C3B6E'
+  ],
 
-  {
-    id: "location",
-    x: 1095,
-    y: 276,
-    max: 105,
-    size: 13
-  },
+  GB: [
+    '#012169',
+    '#FFFFFF',
+    '#C8102E'
+  ],
 
-  {
-    id: "country",
-    x: 1095,
-    y: 315,
-    max: 105,
-    size: 13
-  },
+  DE: [
+    '#000000',
+    '#DD0000',
+    '#FFCE00'
+  ],
 
-  {
-    id: "chapter",
-    x: 1095,
-    y: 354,
-    max: 105,
-    size: 13
+  FR: [
+    '#0055A4',
+    '#FFFFFF',
+    '#EF4135'
+  ],
+
+  IT: [
+    '#009246',
+    '#FFFFFF',
+    '#CE2B37'
+  ],
+
+  ES: [
+    '#AA151B',
+    '#F1BF00',
+    '#AA151B'
+  ],
+
+  NL: [
+    '#AE1C28',
+    '#FFFFFF',
+    '#21468B'
+  ],
+
+  BE: [
+    '#000000',
+    '#FAE042',
+    '#ED2939'
+  ],
+
+  CH: [
+    '#D52B1E',
+    '#FFFFFF'
+  ],
+
+  AT: [
+    '#ED2939',
+    '#FFFFFF',
+    '#ED2939'
+  ],
+
+  SE: [
+    '#006AA7',
+    '#FECC00'
+  ],
+
+  NO: [
+    '#BA0C2F',
+    '#FFFFFF',
+    '#00205B'
+  ],
+
+  DK: [
+    '#C60C30',
+    '#FFFFFF'
+  ],
+
+  FI: [
+    '#FFFFFF',
+    '#003580'
+  ],
+
+  PL: [
+    '#FFFFFF',
+    '#DC143C'
+  ],
+
+  GR: [
+    '#0D5EAF',
+    '#FFFFFF'
+  ],
+
+  RO: [
+    '#002B7F',
+    '#FCD116',
+    '#CE1126'
+  ],
+
+  BG: [
+    '#FFFFFF',
+    '#00966E',
+    '#D62612'
+  ],
+
+  UA: [
+    '#0057B7',
+    '#FFD700'
+  ],
+
+  RU: [
+    '#FFFFFF',
+    '#0039A6',
+    '#D52B1E'
+  ],
+
+  AE: [
+    '#00732F',
+    '#FFFFFF',
+    '#000000',
+    '#FF0000'
+  ],
+
+  SA: [
+    '#006C35',
+    '#FFFFFF'
+  ],
+
+  IL: [
+    '#FFFFFF',
+    '#0038B8'
+  ],
+
+  IN: [
+    '#FF9933',
+    '#FFFFFF',
+    '#138808'
+  ],
+
+  CN: [
+    '#DE2910',
+    '#FFDE00'
+  ],
+
+  JP: [
+    '#FFFFFF',
+    '#BC002D'
+  ],
+
+  KR: [
+    '#FFFFFF',
+    '#CD2E3A',
+    '#0F64CD'
+  ],
+
+  SG: [
+    '#EF3340',
+    '#FFFFFF'
+  ],
+
+  ID: [
+    '#CE1126',
+    '#FFFFFF'
+  ],
+
+  MY: [
+    '#CC0001',
+    '#FFFFFF',
+    '#010066'
+  ],
+
+  TH: [
+    '#A51931',
+    '#FFFFFF',
+    '#2D2A4A'
+  ],
+
+  VN: [
+    '#DA251D',
+    '#FFFF00'
+  ],
+
+  PH: [
+    '#0038A8',
+    '#CE1126',
+    '#FFFFFF'
+  ],
+
+  AU: [
+    '#00008B',
+    '#FFFFFF'
+  ],
+
+  NZ: [
+    '#00247D',
+    '#FFFFFF',
+    '#CC142B'
+  ],
+
+  BR: [
+    '#009C3B',
+    '#FFDF00',
+    '#002776'
+  ],
+
+  AR: [
+    '#74ACDF',
+    '#FFFFFF'
+  ],
+
+  MX: [
+    '#006847',
+    '#FFFFFF',
+    '#CE1126'
+  ],
+
+  CA: [
+    '#FF0000',
+    '#FFFFFF'
+  ]
+
+};
+
+
+/* -------------------------------------------------------
+   FLAG DRAWING
+------------------------------------------------------- */
+
+function drawFlag(code, x, y, width = 30, height = 20) {
+
+  const colors = FLAGS[code] || ['#182b54', '#ffffff'];
+
+  ctx.save();
+
+  /*
+   * Rounded flag container
+   */
+  ctx.beginPath();
+
+  const radius = 3;
+
+  ctx.roundRect(
+    x,
+    y,
+    width,
+    height,
+    radius
+  );
+
+  ctx.clip();
+
+  /*
+   * Most flags are represented using horizontal
+   * color bands. This keeps the PNG self-contained.
+   */
+  const bandHeight = height / colors.length;
+
+  colors.forEach((color, index) => {
+
+    ctx.fillStyle = color;
+
+    ctx.fillRect(
+      x,
+      y + index * bandHeight,
+      width,
+      bandHeight + 1
+    );
+
+  });
+
+  /*
+   * Special vertical flags
+   */
+
+  if (
+    ['FR','IT','BE','RO','MX'].includes(code)
+  ) {
+
+    ctx.clearRect(x, y, width, height);
+
+    const bandWidth = width / 3;
+
+    colors.slice(0,3).forEach((color,index) => {
+
+      ctx.fillStyle = color;
+
+      ctx.fillRect(
+        x + index * bandWidth,
+        y,
+        bandWidth + 1,
+        height
+      );
+
+    });
+
   }
 
-];
+  /*
+   * Simple Japanese / Korean / Turkish markers
+   */
 
+  if (code === 'JP') {
 
-/*
-  ---------------------------------------------------------
-  FONT / TEXT HELPERS
-  ---------------------------------------------------------
-*/
+    ctx.fillStyle = '#BC002D';
 
-function getFont(size) {
-  return `700 ${size}px Inter, Arial, sans-serif`;
+    ctx.beginPath();
+
+    ctx.arc(
+      x + width / 2,
+      y + height / 2,
+      height * .28,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fill();
+
+  }
+
+  if (code === 'TR') {
+
+    ctx.fillStyle = '#FFFFFF';
+
+    ctx.beginPath();
+
+    ctx.arc(
+      x + width * .43,
+      y + height / 2,
+      height * .27,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fill();
+
+    ctx.fillStyle = '#E30A17';
+
+    ctx.beginPath();
+
+    ctx.arc(
+      x + width * .49,
+      y + height / 2,
+      height * .21,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fill();
+
+    /*
+     * Crescent tip
+     */
+
+    ctx.fillStyle = '#FFFFFF';
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+      x + width * .66,
+      y + height * .5
+    );
+
+    ctx.lineTo(
+      x + width * .53,
+      y + height * .36
+    );
+
+    ctx.lineTo(
+      x + width * .53,
+      y + height * .64
+    );
+
+    ctx.closePath();
+
+    ctx.fill();
+
+  }
+
+  ctx.restore();
+
 }
 
 
-/*
-  Finds the largest font size that fits
-  inside the available width.
-*/
-function fitFont(text, maxWidth, startSize) {
+/* -------------------------------------------------------
+   TEXT FITTING
+------------------------------------------------------- */
+
+function fitFont(
+  text,
+  maxWidth,
+  startSize = 14,
+  minSize = 8
+) {
 
   let size = startSize;
 
-  while (size > 8) {
+  while (size > minSize) {
 
-    ctx.font = getFont(size);
+    ctx.font =
+      `700 ${size}px ${FONT_FAMILY}`;
 
-    if (ctx.measureText(text).width <= maxWidth) {
+    if (
+      ctx.measureText(text).width <= maxWidth
+    ) {
+
       return size;
+
     }
 
     size -= 0.5;
+
   }
 
-  return 8;
+  return minSize;
+
 }
 
 
-/*
-  Returns a clipped version if even the smallest
-  font cannot fit.
-*/
-function fitText(text, maxWidth, startSize) {
+/* -------------------------------------------------------
+   CENTERED TEXT
+------------------------------------------------------- */
 
-  let size = fitFont(text, maxWidth, startSize);
+function drawCenteredText(
+  text,
+  x,
+  y,
+  width,
+  startSize = 14,
+  minSize = 8
+) {
 
-  ctx.font = getFont(size);
+  const size = fitFont(
+    text,
+    width,
+    startSize,
+    minSize
+  );
 
-  if (ctx.measureText(text).width <= maxWidth) {
-    return {
-      text,
-      size
-    };
-  }
+  ctx.font =
+    `700 ${size}px ${FONT_FAMILY}`;
 
-  let shortened = text;
+  ctx.fillStyle = '#182b54';
 
-  while (
-    shortened.length > 3 &&
-    ctx.measureText(shortened + "…").width > maxWidth
-  ) {
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
 
-    shortened = shortened.slice(0, -1);
-  }
+  ctx.fillText(
+    text,
+    x + width / 2,
+    y
+  );
 
-  return {
-    text: shortened + "…",
-    size
-  };
 }
 
 
-/*
-  ---------------------------------------------------------
-  DRAW
-  ---------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   MAIN DRAW
+------------------------------------------------------- */
 
 function draw() {
 
-  /*
-    Clear canvas.
-  */
   ctx.clearRect(
     0,
     0,
@@ -352,179 +749,253 @@ function draw() {
     canvas.height
   );
 
+  /*
+   * Background banner
+   */
+
+  if (img.complete) {
+
+    ctx.drawImage(
+      img,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+  }
+
 
   /*
-    Draw original banner artwork.
-  */
-  ctx.drawImage(
-    img,
-    0,
-    0,
-    1500,
-    500
+   * RIGHT-SIDE PROFILE BOXES
+   *
+   * These coordinates are intentionally inside
+   * the empty value area of the new artwork.
+   */
+
+  const slots = {
+
+    name: {
+      x: 1235,
+      y: 394,
+      width: 225
+    },
+
+    username: {
+      x: 1235,
+      y: 454,
+      width: 225
+    },
+
+    location: {
+      x: 1235,
+      y: 523,
+      width: 225
+    },
+
+    chapter: {
+      x: 1235,
+      y: 595,
+      width: 225
+    }
+
+  };
+
+
+  /*
+   * Values
+   */
+
+  const name =
+    document.getElementById('name').value.trim()
+    || defaults.name;
+
+  const username =
+    document.getElementById('username').value.trim()
+    || defaults.username;
+
+  const location =
+    document.getElementById('location').value.trim()
+    || defaults.location;
+
+  const chapter =
+    document.getElementById('chapter').value.trim()
+    || defaults.chapter;
+
+  const country =
+    document.getElementById('country').value
+    || defaults.country;
+
+
+  /*
+   * Render profile values
+   */
+
+  drawCenteredText(
+    name,
+    slots.name.x,
+    slots.name.y,
+    slots.name.width,
+    16,
+    9
+  );
+
+
+  drawCenteredText(
+    username,
+    slots.username.x,
+    slots.username.y,
+    slots.username.width,
+    15,
+    9
+  );
+
+
+  drawCenteredText(
+    location,
+    slots.location.x,
+    slots.location.y,
+    slots.location.width,
+    15,
+    9
   );
 
 
   /*
-    Draw user/community values.
-  */
-  for (const slot of slots) {
+   * CHAPTER
+   *
+   * Text + country flag
+   */
 
-    const input =
-      document.getElementById(slot.id);
-
-    let value =
-      input.value.trim();
-
-    if (!value) {
-      value = defaults[slot.id];
-    }
-
-
-    /*
-      The banner uses the code-like format:
-
-      </Ali Çınar>
-      </@malto>
-      </İzmir>
-      </Türkiye>
-      </Arc Türkiye>
-    */
-
-    value = `</${value}>`;
-
-
-    /*
-      Calculate appropriate font size.
-    */
-    const fitted =
-      fitText(
-        value,
-        slot.max,
-        slot.size
-      );
-
-
-    /*
-      -----------------------------------------------------
-      CLEAN VALUE AREA
-      -----------------------------------------------------
-
-      We intentionally clean only the right-side
-      value region.
-
-      The existing NAME / USERNAME / LOCATION /
-      COUNTRY / CHAPTER labels remain untouched.
-    */
-
-    ctx.fillStyle = "#ffffff";
-
-    ctx.fillRect(
-      slot.x - 5,
-      slot.y - 12,
-      slot.max + 10,
-      24
+  const chapterFontSize =
+    fitFont(
+      chapter,
+      180,
+      15,
+      9
     );
 
+  ctx.font =
+    `700 ${chapterFontSize}px ${FONT_FAMILY}`;
 
-    /*
-      -----------------------------------------------------
-      TEXT
-      -----------------------------------------------------
-    */
+  const chapterWidth =
+    ctx.measureText(chapter).width;
 
-    ctx.font =
-      getFont(fitted.size);
+  const flagWidth = 30;
+  const gap = 9;
 
-    ctx.fillStyle =
-      "#182b54";
+  const totalWidth =
+    chapterWidth +
+    gap +
+    flagWidth;
 
-    ctx.textAlign =
-      "left";
 
-    ctx.textBaseline =
-      "middle";
+  /*
+   * Center chapter + flag as a group
+   */
 
-    ctx.fillText(
-      fitted.text,
-      slot.x,
-      slot.y
-    );
-  }
+  const startX =
+    slots.chapter.x +
+    (slots.chapter.width - totalWidth) / 2;
+
+
+  ctx.fillStyle = '#182b54';
+
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+
+  ctx.fillText(
+    chapter,
+    startX,
+    slots.chapter.y
+  );
+
+
+  drawFlag(
+    country,
+    startX + chapterWidth + gap,
+    slots.chapter.y - 10,
+    30,
+    20
+  );
+
 }
 
 
-/*
-  ---------------------------------------------------------
-  IMAGE LOAD
-  ---------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   EVENTS
+------------------------------------------------------- */
 
-img.onload = function() {
-  draw();
-};
+img.onload = draw;
 
-
-/*
-  ---------------------------------------------------------
-  LIVE PREVIEW
-  ---------------------------------------------------------
-*/
-
-fields.forEach(function(id) {
+fields.forEach(id => {
 
   document
     .getElementById(id)
     .addEventListener(
-      "input",
+      'input',
+      draw
+    );
+
+  document
+    .getElementById(id)
+    .addEventListener(
+      'change',
       draw
     );
 
 });
 
 
-/*
-  ---------------------------------------------------------
-  DOWNLOAD
-  ---------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   DOWNLOAD
+------------------------------------------------------- */
 
 document
-  .getElementById("download")
-  .addEventListener("click", function() {
+  .getElementById('download')
+  .addEventListener('click', () => {
 
     const a =
-      document.createElement("a");
+      document.createElement('a');
 
     a.download =
-      "arc-community-banner-1500x500.png";
+      'arc-community-banner-1500x500.png';
 
     a.href =
-      canvas.toDataURL("image/png");
+      canvas.toDataURL('image/png');
 
     a.click();
 
   });
 
 
-/*
-  ---------------------------------------------------------
-  RESET
-  ---------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   RESET
+------------------------------------------------------- */
 
 document
-  .getElementById("reset")
-  .addEventListener("click", function() {
+  .getElementById('reset')
+  .addEventListener('click', () => {
 
-    fields.forEach(function(id) {
+    document
+      .getElementById('name')
+      .value = defaults.name;
 
-      document
-        .getElementById(id)
-        .value =
-        defaults[id];
+    document
+      .getElementById('username')
+      .value = defaults.username;
 
-    });
+    document
+      .getElementById('location')
+      .value = defaults.location;
+
+    document
+      .getElementById('chapter')
+      .value = defaults.chapter;
+
+    document
+      .getElementById('country')
+      .value = defaults.country;
 
     draw();
 
