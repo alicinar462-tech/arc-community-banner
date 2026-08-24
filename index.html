@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arc Community Banner — Customize</title>
+<style>
+  :root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; }
+  body { margin:0; background:#f5f6f8; color:#18233b; }
+  .wrap { max-width:1180px; margin:32px auto; padding:0 20px 40px; }
+  h1 { margin:0 0 6px; font-size:28px; }
+  p { margin:0 0 22px; color:#59647a; }
+  .grid { display:grid; grid-template-columns:320px 1fr; gap:24px; align-items:start; }
+  .panel { background:#fff; border:1px solid #dfe4ec; border-radius:16px; padding:20px; box-shadow:0 8px 28px rgba(20,35,60,.06); }
+  label { display:block; font-size:12px; font-weight:700; letter-spacing:.05em; margin:14px 0 6px; }
+  input { width:100%; box-sizing:border-box; padding:11px 12px; border:1px solid #cbd3df; border-radius:9px; font-size:14px; }
+  button { width:100%; margin-top:18px; border:0; border-radius:9px; padding:12px; font-weight:800; cursor:pointer; }
+  #download { background:#172b55; color:#fff; }
+  #reset { background:#edf1f6; color:#24324d; }
+  canvas { width:100%; height:auto; display:block; background:white; border-radius:10px; border:1px solid #dfe4ec; }
+  .hint { font-size:12px; line-height:1.5; margin-top:14px; color:#6a7486; }
+  @media(max-width:850px){ .grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Arc Community Banner</h1>
+  <p>Fork the repository, personalize these fields, then download your 1500 × 500 X/Twitter banner.</p>
+  <div class="grid">
+    <section class="panel">
+      <label for="name">NAME</label>
+      <input id="name" value="YOUR NAME">
+      <label for="username">USERNAME</label>
+      <input id="username" value="@YOUR_USERNAME">
+      <label for="location">LOCATION</label>
+      <input id="location" value="YOUR CITY">
+      <label for="country">COUNTRY</label>
+      <input id="country" value="YOUR COUNTRY">
+      <label for="chapter">CHAPTER</label>
+      <input id="chapter" value="YOUR CHAPTER">
+      <button id="download">DOWNLOAD 1500 × 500 PNG</button>
+      <button id="reset">RESET</button>
+      <div class="hint">
+        The artwork remains fixed; only your personal/community fields are editable.
+        The avatar area is intentionally left open for X/Twitter's profile image.
+      </div>
+    </section>
+    <section class="panel">
+      <canvas id="canvas" width="1500" height="500"></canvas>
+    </section>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const img = new Image();
+img.src = 'assets/banner-base.png';
+
+const fields = ['name','username','location','country','chapter'];
+const defaults = {
+  name:'YOUR NAME',
+  username:'@YOUR_USERNAME',
+  location:'YOUR CITY',
+  country:'YOUR COUNTRY',
+  chapter:'YOUR CHAPTER'
+};
+
+function fitText(text, maxWidth, font) {
+  ctx.font = font;
+  if (ctx.measureText(text).width <= maxWidth) return text;
+  let s = text;
+  while (s.length > 3 && ctx.measureText(s + '…').width > maxWidth) s = s.slice(0,-1);
+  return s + '…';
+}
+
+function draw() {
+  ctx.clearRect(0,0,1500,500);
+  ctx.drawImage(img,0,0,1500,500);
+
+  // Value slots inside the five profile cards on the right.
+  // Coordinates are tied to the 1500x500 contest layout.
+  const slots = [
+    {id:'name',      x:1430, y:282, max:100},
+    {id:'username',  x:1430, y:321, max:100},
+    {id:'location',  x:1430, y:362, max:100},
+    {id:'country',   x:1430, y:403, max:100},
+    {id:'chapter',   x:1430, y:444, max:100}
+  ];
+
+  ctx.fillStyle = '#182b54';
+  ctx.textBaseline = 'middle';
+  for (const s of slots) {
+    const value = document.getElementById(s.id).value.trim() || defaults[s.id];
+    ctx.font = '700 8px Arial, sans-serif';
+    const clipped = fitText(value, s.max, '700 8px Arial, sans-serif');
+    // White out only the placeholder/value area, preserving the field label.
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(s.x-4, s.y-9, s.max+8, 18);
+    ctx.fillStyle = '#182b54';
+    ctx.fillText(clipped, s.x, s.y);
+  }
+}
+
+img.onload = draw;
+fields.forEach(id => document.getElementById(id).addEventListener('input', draw));
+
+document.getElementById('download').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.download = 'arc-community-banner-1500x500.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  fields.forEach(id => document.getElementById(id).value = defaults[id]);
+  draw();
+});
+</script>
+</body>
+</html>
