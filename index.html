@@ -166,6 +166,7 @@
 
       <select id="country">
         <option value="">No flag</option>
+
         <option value="🇦🇫">Afghanistan 🇦🇫</option>
         <option value="🇦🇱">Albania 🇦🇱</option>
         <option value="🇩🇿">Algeria 🇩🇿</option>
@@ -324,6 +325,13 @@ const img = new Image();
 
 img.src = "assets/banner-base.png";
 
+
+/*
+=========================================================
+FIELDS
+=========================================================
+*/
+
 const fields = [
   "name",
   "username",
@@ -331,6 +339,7 @@ const fields = [
   "chapter",
   "country"
 ];
+
 
 const defaults = {
   name: "YOUR NAME",
@@ -343,47 +352,45 @@ const defaults = {
 
 /*
 =========================================================
-BANNER COORDINATES
+BANNER VALUE POSITIONS
 =========================================================
 
-These coordinates correspond to the current
-1500 × 500 banner.
+The source artwork is already 1500 × 500.
 
-The right-side cards are:
+DO NOT scale or crop the artwork.
 
-NAME
-USERNAME
-LOCATION
-CHAPTER
+The value area begins around X = 1310.
+The right edge of the cards is around X = 1435.
 
-Country card has been removed.
+This gives the text enough room while keeping
+it completely inside the cards.
+=========================================================
 */
-
 
 const slots = {
 
   name: {
-    x: 1375,
+    x: 1310,
     y: 245,
-    maxWidth: 105
+    maxWidth: 115
   },
 
   username: {
-    x: 1375,
+    x: 1310,
     y: 288,
-    maxWidth: 105
+    maxWidth: 115
   },
 
   location: {
-    x: 1375,
+    x: 1310,
     y: 332,
-    maxWidth: 105
+    maxWidth: 115
   },
 
   chapter: {
-    x: 1375,
+    x: 1310,
     y: 376,
-    maxWidth: 105
+    maxWidth: 115
   }
 
 };
@@ -391,124 +398,65 @@ const slots = {
 
 /*
 =========================================================
-FONT
+TEXT STYLE
+=========================================================
+
+Inter is visually much closer to the Arc artwork
+than Arial.
+
+Fallbacks are included for systems where Inter
+is not installed.
 =========================================================
 */
 
 const FONT_FAMILY =
-  '"Arial", "Helvetica Neue", sans-serif';
+  'Inter, "Segoe UI", system-ui, sans-serif';
+
+const TEXT_COLOR =
+  "#182b54";
 
 
 /*
 =========================================================
-TEXT FIT
+CLEAR VALUE AREA
+=========================================================
+
+The original banner contains:
+
+YOUR NAME
+@YOUR_USERNAME
+YOUR CITY
+YOUR CHAPTER
+
+These are part of the base artwork.
+
+We cover only the value area before drawing
+the user's own values.
+
+The labels and card borders remain untouched.
 =========================================================
 */
 
-function fitText(text, maxWidth, baseSize) {
+function clearValueArea(slot) {
 
-  let size = baseSize;
+  ctx.save();
 
-  while (size >= 9) {
+  ctx.fillStyle = "#ffffff";
 
-    ctx.font =
-      `800 ${size}px ${FONT_FAMILY}`;
-
-    if (
-      ctx.measureText(text).width <= maxWidth
-    ) {
-      return {
-        text,
-        size
-      };
-    }
-
-    size -= 0.5;
-  }
-
-  ctx.font =
-    `800 9px ${FONT_FAMILY}`;
-
-  let shortened = text;
-
-  while (
-    shortened.length > 3 &&
-    ctx.measureText(shortened + "…").width > maxWidth
-  ) {
-    shortened =
-      shortened.slice(0, -1);
-  }
-
-  return {
-    text: shortened + "…",
-    size: 9
-  };
-}
-
-
-/*
-=========================================================
-DRAW BASE IMAGE
-=========================================================
-
-IMPORTANT:
-
-The image is fitted proportionally.
-It is NOT stretched independently in X/Y.
-*/
-
-
-function drawBaseImage() {
-
-  const canvasRatio =
-    canvas.width / canvas.height;
-
-  const imageRatio =
-    img.width / img.height;
-
-  let drawWidth;
-  let drawHeight;
-  let offsetX;
-  let offsetY;
-
-  if (imageRatio > canvasRatio) {
-
-    drawHeight = canvas.height;
-
-    drawWidth =
-      drawHeight * imageRatio;
-
-    offsetX =
-      (canvas.width - drawWidth) / 2;
-
-    offsetY = 0;
-
-  } else {
-
-    drawWidth = canvas.width;
-
-    drawHeight =
-      drawWidth / imageRatio;
-
-    offsetX = 0;
-
-    offsetY =
-      (canvas.height - drawHeight) / 2;
-  }
-
-  ctx.drawImage(
-    img,
-    offsetX,
-    offsetY,
-    drawWidth,
-    drawHeight
+  ctx.fillRect(
+    slot.x - 8,
+    slot.y - 15,
+    slot.maxWidth + 18,
+    30
   );
+
+  ctx.restore();
 }
 
 
 /*
 =========================================================
-NORMALIZE USERNAME
+USERNAME NORMALIZATION
 =========================================================
 */
 
@@ -530,6 +478,70 @@ function normalizeUsername(value) {
 
 /*
 =========================================================
+TEXT FITTING
+=========================================================
+*/
+
+function getFittedText(
+  text,
+  maxWidth,
+  startSize = 16,
+  minimumSize = 11
+) {
+
+  let size = startSize;
+
+  while (size >= minimumSize) {
+
+    ctx.font =
+      `800 ${size}px ${FONT_FAMILY}`;
+
+    const width =
+      ctx.measureText(text).width;
+
+    if (width <= maxWidth) {
+
+      return {
+        text,
+        size
+      };
+
+    }
+
+    size -= 0.5;
+  }
+
+
+  /*
+  If the text is still too long,
+  shorten it safely.
+  */
+
+  ctx.font =
+    `800 ${minimumSize}px ${FONT_FAMILY}`;
+
+  let shortened = text;
+
+  while (
+    shortened.length > 3 &&
+    ctx.measureText(
+      shortened + "…"
+    ).width > maxWidth
+  ) {
+
+    shortened =
+      shortened.slice(0, -1);
+  }
+
+  return {
+    text: shortened + "…",
+    size: minimumSize
+  };
+}
+
+
+/*
+=========================================================
 DRAW FIELD
 =========================================================
 */
@@ -538,14 +550,19 @@ function drawField(id) {
 
   const slot = slots[id];
 
-  if (!slot) return;
+  if (!slot) {
+    return;
+  }
+
 
   let value =
     document.getElementById(id).value.trim();
 
+
   if (!value) {
     value = defaults[id];
   }
+
 
   if (id === "username") {
     value = normalizeUsername(value);
@@ -553,23 +570,36 @@ function drawField(id) {
 
 
   /*
-  -------------------------------------------------------
-  Text styling
-  -------------------------------------------------------
+  Clear the old placeholder first.
+  */
+
+  clearValueArea(slot);
+
+
+  /*
+  Calculate the correct font size.
   */
 
   const fitted =
-    fitText(
+    getFittedText(
       value,
       slot.maxWidth,
-      14
+      16,
+      11
     );
+
+
+  /*
+  Text settings.
+  */
+
+  ctx.save();
 
   ctx.font =
     `800 ${fitted.size}px ${FONT_FAMILY}`;
 
   ctx.fillStyle =
-    "#182b54";
+    TEXT_COLOR;
 
   ctx.textBaseline =
     "middle";
@@ -579,9 +609,7 @@ function drawField(id) {
 
 
   /*
-  -------------------------------------------------------
-  Draw text
-  -------------------------------------------------------
+  Draw the actual value.
   */
 
   ctx.fillText(
@@ -589,12 +617,20 @@ function drawField(id) {
     slot.x,
     slot.y
   );
+
+  ctx.restore();
 }
 
 
 /*
 =========================================================
-DRAW FLAG
+FLAG DRAWING
+=========================================================
+
+The flag is placed after the CHAPTER text.
+
+If the chapter is too long, the chapter text
+automatically becomes smaller.
 =========================================================
 */
 
@@ -603,26 +639,113 @@ function drawFlag() {
   const country =
     document.getElementById("country").value;
 
-  if (!country) return;
+  if (!country) {
+    return;
+  }
+
+
+  const slot =
+    slots.chapter;
+
+
+  const chapterInput =
+    document.getElementById("chapter");
+
+  let chapter =
+    chapterInput.value.trim();
+
+
+  if (!chapter) {
+    chapter = defaults.chapter;
+  }
 
 
   /*
-  Flag is placed at the right side of CHAPTER card.
+  Calculate chapter text size while reserving
+  some space for the flag.
   */
 
-  ctx.font =
-    "800 20px Arial, sans-serif";
+  const flagSpace = 25;
 
-  ctx.textAlign =
-    "left";
+  const fitted =
+    getFittedText(
+      chapter,
+      slot.maxWidth - flagSpace,
+      16,
+      11
+    );
+
+
+  ctx.save();
+
+  ctx.font =
+    `800 ${fitted.size}px ${FONT_FAMILY}`;
+
+  ctx.fillStyle =
+    TEXT_COLOR;
 
   ctx.textBaseline =
     "middle";
 
+  ctx.textAlign =
+    "left";
+
+
+  const textWidth =
+    ctx.measureText(
+      fitted.text
+    ).width;
+
+
+  /*
+  Draw flag immediately after chapter.
+  */
+
+  const flagX =
+    slot.x + textWidth + 8;
+
+
+  ctx.font =
+    `16px "Segoe UI Emoji", "Apple Color Emoji", sans-serif`;
+
   ctx.fillText(
     country,
-    1470,
-    slots.chapter.y
+    flagX,
+    slot.y
+  );
+
+  ctx.restore();
+}
+
+
+/*
+=========================================================
+DRAW BASE
+=========================================================
+
+IMPORTANT:
+
+The supplied banner is already 1500 × 500.
+
+Therefore we draw it 1:1.
+
+No proportional fitting.
+No centering.
+No cropping.
+No stretching calculations.
+
+This prevents the previous shifting problem.
+=========================================================
+*/
+
+function drawBaseImage() {
+
+  ctx.drawImage(
+    img,
+    0,
+    0,
+    1500,
+    500
   );
 }
 
@@ -638,34 +761,38 @@ function draw() {
   ctx.clearRect(
     0,
     0,
-    canvas.width,
-    canvas.height
+    1500,
+    500
   );
 
 
   /*
-  Base banner
+  Draw the original artwork.
   */
 
-  if (img.complete && img.naturalWidth) {
+  if (
+    img.complete &&
+    img.naturalWidth > 0
+  ) {
 
     drawBaseImage();
 
   } else {
 
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle =
+      "#ffffff";
 
     ctx.fillRect(
       0,
       0,
-      canvas.width,
-      canvas.height
+      1500,
+      500
     );
   }
 
 
   /*
-  Personal fields
+  Draw user information.
   */
 
   drawField("name");
@@ -687,15 +814,22 @@ IMAGE LOAD
 */
 
 img.onload = () => {
-
   draw();
+};
+
+
+img.onerror = () => {
+
+  console.error(
+    "Could not load assets/banner-base.png"
+  );
 
 };
 
 
 /*
 =========================================================
-LIVE UPDATE
+LIVE INPUT
 =========================================================
 */
 
@@ -725,20 +859,25 @@ DOWNLOAD
 
 document
   .getElementById("download")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    const link =
-      document.createElement("a");
+      const link =
+        document.createElement("a");
 
-    link.download =
-      "arc-community-banner-1500x500.png";
+      link.download =
+        "arc-community-banner-1500x500.png";
 
-    link.href =
-      canvas.toDataURL("image/png");
+      link.href =
+        canvas.toDataURL(
+          "image/png"
+        );
 
-    link.click();
+      link.click();
 
-  });
+    }
+  );
 
 
 /*
@@ -749,26 +888,39 @@ RESET
 
 document
   .getElementById("reset")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    document.getElementById("name").value =
-      defaults.name;
+      document.getElementById(
+        "name"
+      ).value =
+        defaults.name;
 
-    document.getElementById("username").value =
-      defaults.username;
+      document.getElementById(
+        "username"
+      ).value =
+        defaults.username;
 
-    document.getElementById("location").value =
-      defaults.location;
+      document.getElementById(
+        "location"
+      ).value =
+        defaults.location;
 
-    document.getElementById("chapter").value =
-      defaults.chapter;
+      document.getElementById(
+        "chapter"
+      ).value =
+        defaults.chapter;
 
-    document.getElementById("country").value =
-      defaults.country;
+      document.getElementById(
+        "country"
+      ).value =
+        defaults.country;
 
-    draw();
+      draw();
 
-  });
+    }
+  );
 
 </script>
 
