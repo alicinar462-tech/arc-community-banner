@@ -96,6 +96,11 @@
     color: #fff;
   }
 
+  #download:disabled {
+    opacity: .6;
+    cursor: wait;
+  }
+
   #reset {
     background: #edf1f6;
     color: #24324d;
@@ -105,7 +110,7 @@
     width: 100%;
     height: auto;
     display: block;
-    background: #fff;
+    background: white;
     border-radius: 10px;
     border: 1px solid #dfe4ec;
   }
@@ -175,7 +180,9 @@
       <label for="country">COUNTRY FLAG</label>
 
       <select id="country">
+
         <option value="">No flag</option>
+
         <option value="TR">Türkiye</option>
         <option value="US">United States</option>
         <option value="GB">United Kingdom</option>
@@ -188,10 +195,12 @@
         <option value="BE">Belgium</option>
         <option value="CH">Switzerland</option>
         <option value="AT">Austria</option>
+
         <option value="SE">Sweden</option>
         <option value="NO">Norway</option>
         <option value="DK">Denmark</option>
         <option value="FI">Finland</option>
+
         <option value="PL">Poland</option>
         <option value="CZ">Czechia</option>
         <option value="GR">Greece</option>
@@ -199,9 +208,11 @@
         <option value="BG">Bulgaria</option>
         <option value="UA">Ukraine</option>
         <option value="RU">Russia</option>
+
         <option value="GE">Georgia</option>
         <option value="AZ">Azerbaijan</option>
         <option value="AM">Armenia</option>
+
         <option value="IL">Israel</option>
         <option value="SA">Saudi Arabia</option>
         <option value="AE">United Arab Emirates</option>
@@ -211,6 +222,7 @@
         <option value="ZA">South Africa</option>
         <option value="NG">Nigeria</option>
         <option value="KE">Kenya</option>
+
         <option value="IN">India</option>
         <option value="PK">Pakistan</option>
         <option value="BD">Bangladesh</option>
@@ -223,8 +235,10 @@
         <option value="ID">Indonesia</option>
         <option value="MY">Malaysia</option>
         <option value="PH">Philippines</option>
+
         <option value="AU">Australia</option>
         <option value="NZ">New Zealand</option>
+
         <option value="CA">Canada</option>
         <option value="MX">Mexico</option>
         <option value="BR">Brazil</option>
@@ -232,6 +246,7 @@
         <option value="CL">Chile</option>
         <option value="CO">Colombia</option>
         <option value="PE">Peru</option>
+
       </select>
 
       <button id="download">
@@ -250,30 +265,37 @@
     </section>
 
     <section class="panel">
+
       <canvas
         id="canvas"
         width="1500"
         height="500"
       ></canvas>
+
     </section>
 
   </div>
+
 </div>
 
 
 <script>
+
+/* =====================================================
+   CANVAS
+===================================================== */
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const img = new Image();
 
-/*
-  IMPORTANT:
-  Keep your banner image here.
-*/
 img.src = "assets/banner-base.png";
 
+
+/* =====================================================
+   FIELDS
+===================================================== */
 
 const fields = [
   "name",
@@ -293,50 +315,50 @@ const defaults = {
 };
 
 
-/*
-  -------------------------------------------------------
-  TEXT SETTINGS
-  -------------------------------------------------------
+/* =====================================================
+   TEXT POSITIONS
+=====================================================
 
-  These coordinates are based on the current 1500x500
-  banner layout.
+   Coordinates are based on the 1500 × 500 banner.
 
-  The labels NAME / USERNAME / LOCATION / CHAPTER are
-  already part of the background image.
+   NAME:
+   moved slightly UP
 
-  We only draw the values.
-*/
+   LOCATION:
+   moved slightly DOWN
+
+===================================================== */
 
 const slots = {
 
   name: {
-    x: 1308,
-    y: 250,
-    width: 112,
+    x: 1307,
+    y: 247,
+    width: 115,
     maxFont: 17,
     minFont: 9
   },
 
   username: {
-    x: 1308,
-    y: 289,
-    width: 112,
+    x: 1307,
+    y: 293,
+    width: 115,
     maxFont: 17,
     minFont: 9
   },
 
   location: {
-    x: 1308,
-    y: 328,
-    width: 112,
+    x: 1307,
+    y: 338,
+    width: 115,
     maxFont: 17,
     minFont: 9
   },
 
   chapter: {
-    x: 1308,
-    y: 377,
-    width: 88,
+    x: 1307,
+    y: 378,
+    width: 83,
     maxFont: 17,
     minFont: 9
   }
@@ -344,31 +366,104 @@ const slots = {
 };
 
 
-/*
-  -------------------------------------------------------
-  FONT
-  -------------------------------------------------------
-*/
+/* =====================================================
+   FONT
+===================================================== */
 
 const FONT_FAMILY =
   'Inter, "Segoe UI", system-ui, -apple-system, sans-serif';
 
 
+/* =====================================================
+   COUNTRY FLAG
+===================================================== */
+
+let flagImage = null;
+let flagCode = "";
+let flagLoading = false;
+let flagError = false;
+
+
 /*
-  -------------------------------------------------------
-  SAFE TEXT FIT
-  -------------------------------------------------------
+  CORS is explicitly enabled.
+
+  This prevents the remote flag from poisoning
+  the canvas and breaking PNG download.
 */
 
-function getFittedFont(text, maxWidth, maxSize, minSize) {
+function loadFlag(code) {
+
+  flagImage = null;
+  flagCode = code;
+  flagError = false;
+
+  if (!code) {
+    flagLoading = false;
+    draw();
+    return Promise.resolve();
+  }
+
+  flagLoading = true;
+
+  return new Promise((resolve) => {
+
+    const flag = new Image();
+
+    flag.crossOrigin = "anonymous";
+
+    flag.onload = function() {
+
+      flagImage = flag;
+      flagLoading = false;
+      flagError = false;
+
+      draw();
+
+      resolve();
+
+    };
+
+    flag.onerror = function() {
+
+      flagImage = null;
+      flagLoading = false;
+      flagError = true;
+
+      draw();
+
+      resolve();
+
+    };
+
+    flag.src =
+      `https://flagcdn.com/w40/${code.toLowerCase()}.png`;
+
+  });
+
+}
+
+
+/* =====================================================
+   TEXT FITTING
+===================================================== */
+
+function getFittedFont(
+  text,
+  maxWidth,
+  maxSize,
+  minSize
+) {
 
   let size = maxSize;
 
   while (size > minSize) {
 
-    ctx.font = `800 ${size}px ${FONT_FAMILY}`;
+    ctx.font =
+      `800 ${size}px ${FONT_FAMILY}`;
 
-    if (ctx.measureText(text).width <= maxWidth) {
+    if (
+      ctx.measureText(text).width <= maxWidth
+    ) {
       return size;
     }
 
@@ -376,135 +471,130 @@ function getFittedFont(text, maxWidth, maxSize, minSize) {
   }
 
   return minSize;
+
 }
 
 
-/*
-  -------------------------------------------------------
-  DRAW TEXT
-  -------------------------------------------------------
-*/
+/* =====================================================
+   DRAW TEXT
+===================================================== */
 
 function drawValue(id) {
 
-  const input = document.getElementById(id);
+  const element =
+    document.getElementById(id);
 
-  if (!input) return;
+  if (!element) return;
 
-  let value = input.value.trim();
+  let value =
+    element.value.trim();
 
   if (!value) {
     value = defaults[id];
   }
 
-  const slot = slots[id];
 
   /*
-    Do NOT allow the text to become huge.
+    NAME / USERNAME / LOCATION / CHAPTER
 
-    Short text:
-      17px
+    We do NOT paint a white rectangle behind them.
 
-    Medium text:
-      automatically smaller
-
-    Very long text:
-      minimum 9px
+    Therefore the original banner background remains
+    completely visible.
   */
 
-  const fontSize = getFittedFont(
-    value,
-    slot.width,
-    slot.maxFont,
-    slot.minFont
-  );
+  const slot =
+    slots[id];
 
-  ctx.font = `800 ${fontSize}px ${FONT_FAMILY}`;
-  ctx.fillStyle = "#182b54";
-  ctx.textBaseline = "middle";
-  ctx.textAlign = "left";
+
+  const fontSize =
+    getFittedFont(
+      value,
+      slot.width,
+      slot.maxFont,
+      slot.minFont
+    );
+
+
+  ctx.font =
+    `800 ${fontSize}px ${FONT_FAMILY}`;
+
+  ctx.fillStyle =
+    "#182b54";
+
+  ctx.textBaseline =
+    "middle";
+
+  ctx.textAlign =
+    "left";
+
 
   ctx.fillText(
     value,
     slot.x,
     slot.y
   );
+
 }
 
 
-/*
-  -------------------------------------------------------
-  COUNTRY FLAG
-  -------------------------------------------------------
+/* =====================================================
+   DRAW FLAG
+===================================================== */
 
-  We deliberately DO NOT draw emoji flags.
+function drawFlag() {
 
-  Emoji flags are rendered differently by different
-  browsers and operating systems and can become enormous
-  when rendered on canvas.
-
-  Instead we use a small image with a fixed size.
-*/
-
-function drawFlag(code) {
-
-  if (!code) return;
-
-  const flag = new Image();
+  if (!flagImage) return;
 
   /*
-    Fixed-size flag area.
-    24 x 16 keeps it inside the chapter box.
+    Small fixed flag.
+
+    Position is inside the CHAPTER box.
   */
 
-  flag.onload = function() {
+  const width = 24;
+  const height = 16;
 
-    const flagWidth = 24;
-    const flagHeight = 16;
+  const x = 1399;
+  const y = 370;
 
-    const x = 1400;
-    const y = 369;
 
-    ctx.drawImage(
-      flag,
-      x,
-      y,
-      flagWidth,
-      flagHeight
-    );
+  ctx.drawImage(
+    flagImage,
+    x,
+    y,
+    width,
+    height
+  );
 
-  };
-
-  /*
-    FlagCDN provides ISO country flags.
-  */
-
-  flag.src =
-    `https://flagcdn.com/w40/${code.toLowerCase()}.png`;
 }
 
 
-/*
-  -------------------------------------------------------
-  DRAW
-  -------------------------------------------------------
-*/
+/* =====================================================
+   MAIN DRAW
+===================================================== */
 
 function draw() {
+
+  /*
+    Always clear the entire canvas.
+  */
 
   ctx.clearRect(
     0,
     0,
-    canvas.width,
-    canvas.height
+    1500,
+    500
   );
 
-  /*
-    Draw the original banner at EXACTLY 1500x500.
 
-    No automatic scaling.
-    No cropping.
-    No stretching.
+  /*
+    Draw original artwork.
+
+    EXACTLY 1500 × 500.
+
+    No crop.
+    No additional scaling.
   */
 
   ctx.drawImage(
@@ -517,175 +607,247 @@ function draw() {
 
 
   /*
-    Clean only the value areas.
+    IMPORTANT:
 
-    This prevents old values from remaining when the
-    user changes the text.
+    There are NO white rectangles here.
+
+    The banner itself remains the background.
   */
 
-  const cleanAreas = [
-
-    {
-      x: 1300,
-      y: 237,
-      w: 125,
-      h: 26
-    },
-
-    {
-      x: 1300,
-      y: 276,
-      w: 125,
-      h: 26
-    },
-
-    {
-      x: 1300,
-      y: 315,
-      w: 125,
-      h: 26
-    },
-
-    {
-      x: 1300,
-      y: 363,
-      w: 105,
-      h: 27
-    }
-
-  ];
-
-
-  ctx.fillStyle = "#ffffff";
-
-
-  for (const area of cleanAreas) {
-
-    ctx.fillRect(
-      area.x,
-      area.y,
-      area.w,
-      area.h
-    );
-
-  }
-
-
-  /*
-    Draw the four user values.
-  */
 
   drawValue("name");
+
   drawValue("username");
+
   drawValue("location");
+
   drawValue("chapter");
 
+  drawFlag();
 
-  /*
-    Draw selected country flag.
-  */
-
-  const country =
-    document.getElementById("country").value;
-
-  drawFlag(country);
 }
 
 
-/*
-  -------------------------------------------------------
-  IMAGE LOAD
-  -------------------------------------------------------
-*/
+/* =====================================================
+   IMAGE LOAD
+===================================================== */
 
 img.onload = function() {
+
   draw();
+
 };
 
 
-/*
-  -------------------------------------------------------
-  LIVE UPDATE
-  -------------------------------------------------------
-*/
+/* =====================================================
+   LIVE INPUT
+===================================================== */
 
-fields.forEach(id => {
-
-  const element =
-    document.getElementById(id);
-
-  if (!element) return;
-
-  element.addEventListener(
+document
+  .getElementById("name")
+  .addEventListener(
     "input",
     draw
   );
 
-  element.addEventListener(
-    "change",
+
+document
+  .getElementById("username")
+  .addEventListener(
+    "input",
     draw
   );
 
-});
+
+document
+  .getElementById("location")
+  .addEventListener(
+    "input",
+    draw
+  );
 
 
-/*
-  -------------------------------------------------------
-  DOWNLOAD
-  -------------------------------------------------------
-*/
+document
+  .getElementById("chapter")
+  .addEventListener(
+    "input",
+    draw
+  );
+
+
+/* =====================================================
+   COUNTRY CHANGE
+===================================================== */
+
+document
+  .getElementById("country")
+  .addEventListener(
+    "change",
+    function() {
+
+      loadFlag(
+        this.value
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   DOWNLOAD
+===================================================== */
 
 document
   .getElementById("download")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    async function() {
 
-    const link =
-      document.createElement("a");
+      const button = this;
 
-    link.download =
-      "arc-community-banner-1500x500.png";
+      button.disabled = true;
 
-    link.href =
-      canvas.toDataURL("image/png");
-
-    link.click();
-
-  });
+      button.textContent =
+        "PREPARING PNG...";
 
 
-/*
-  -------------------------------------------------------
-  RESET
-  -------------------------------------------------------
-*/
+      /*
+        If a flag is selected but has not finished
+        loading, wait for it first.
+      */
+
+      if (
+        document.getElementById("country").value &&
+        flagLoading
+      ) {
+
+        await new Promise(resolve => {
+
+          const check =
+            setInterval(() => {
+
+              if (!flagLoading) {
+
+                clearInterval(check);
+
+                resolve();
+
+              }
+
+            }, 50);
+
+        });
+
+      }
+
+
+      /*
+        Redraw one final time before exporting.
+      */
+
+      draw();
+
+
+      /*
+        Give the browser one frame to finish drawing.
+      */
+
+      await new Promise(
+        resolve =>
+          requestAnimationFrame(resolve)
+      );
+
+
+      try {
+
+        const dataURL =
+          canvas.toDataURL(
+            "image/png"
+          );
+
+
+        const link =
+          document.createElement("a");
+
+
+        link.download =
+          "arc-community-banner-1500x500.png";
+
+
+        link.href =
+          dataURL;
+
+
+        document.body.appendChild(
+          link
+        );
+
+
+        link.click();
+
+
+        document.body.removeChild(
+          link
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert(
+          "The PNG could not be created. Please wait for the flag to finish loading and try again."
+        );
+
+      }
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "DOWNLOAD 1500 × 500 PNG";
+
+    }
+  );
+
+
+/* =====================================================
+   RESET
+===================================================== */
 
 document
   .getElementById("reset")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    function() {
 
-    document
-      .getElementById("name")
-      .value = defaults.name;
+      document.getElementById("name").value =
+        defaults.name;
 
-    document
-      .getElementById("username")
-      .value = defaults.username;
+      document.getElementById("username").value =
+        defaults.username;
 
-    document
-      .getElementById("location")
-      .value = defaults.location;
+      document.getElementById("location").value =
+        defaults.location;
 
-    document
-      .getElementById("chapter")
-      .value = defaults.chapter;
+      document.getElementById("chapter").value =
+        defaults.chapter;
 
-    document
-      .getElementById("country")
-      .value = defaults.country;
+      document.getElementById("country").value =
+        defaults.country;
 
-    draw();
 
-  });
+      flagImage = null;
+      flagCode = "";
+      flagLoading = false;
+      flagError = false;
+
+
+      draw();
+
+    }
+  );
+
 
 </script>
 
