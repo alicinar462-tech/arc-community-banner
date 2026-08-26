@@ -3,119 +3,111 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Arc Community Banner — Customize</title>
 
 <style>
-:root {
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-}
-
-body {
-  margin: 0;
-  background: #f5f6f8;
-  color: #18233b;
-}
-
-.wrap {
-  max-width: 1180px;
-  margin: 32px auto;
-  padding: 0 20px 40px;
-}
-
-h1 {
-  margin: 0 0 6px;
-  font-size: 28px;
-}
-
-p {
-  margin: 0 0 22px;
-  color: #59647a;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.panel {
-  background: #fff;
-  border: 1px solid #dfe4ec;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 8px 28px rgba(20,35,60,.06);
-}
-
-label {
-  display: block;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .05em;
-  margin: 14px 0 6px;
-}
-
-input,
-select {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 11px 12px;
-  border: 1px solid #cbd3df;
-  border-radius: 9px;
-  font-size: 14px;
-  background: #fff;
-  color: #18233b;
-}
-
-button {
-  width: 100%;
-  margin-top: 18px;
-  border: 0;
-  border-radius: 9px;
-  padding: 12px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-#download {
-  background: #172b55;
-  color: #fff;
-}
-
-#reset {
-  background: #edf1f6;
-  color: #24324d;
-}
-
-canvas {
-  width: 100%;
-  height: auto;
-  display: block;
-  background: white;
-  border-radius: 10px;
-  border: 1px solid #dfe4ec;
-}
-
-.hint {
-  font-size: 12px;
-  line-height: 1.5;
-  margin-top: 14px;
-  color: #6a7486;
-}
-
-@media(max-width:850px) {
-  .grid {
-    grid-template-columns: 1fr;
+  :root {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
   }
-}
+
+  body {
+    margin: 0;
+    background: #f5f6f8;
+    color: #18233b;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 32px auto;
+    padding: 0 20px 40px;
+  }
+
+  h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+  }
+
+  p {
+    margin: 0 0 22px;
+    color: #59647a;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .panel {
+    background: #fff;
+    border: 1px solid #dfe4ec;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 28px rgba(20,35,60,.06);
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    margin: 14px 0 6px;
+  }
+
+  input,
+  select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #cbd3df;
+    border-radius: 9px;
+    font-size: 14px;
+    background: #fff;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 18px;
+    border: 0;
+    border-radius: 9px;
+    padding: 12px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  #download {
+    background: #172b55;
+    color: #fff;
+  }
+
+  #reset {
+    background: #edf1f6;
+    color: #24324d;
+  }
+
+  canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid #dfe4ec;
+  }
+
+  .hint {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 14px;
+    color: #6a7486;
+  }
+
+  @media(max-width:850px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 
@@ -123,742 +115,598 @@ canvas {
 
 <div class="wrap">
 
-<h1>Arc Community Banner</h1>
+  <h1>Arc Community Banner</h1>
 
-<p>
-Fork the repository, personalize these fields,
-then download your 1500 × 500 X/Twitter banner.
-</p>
+  <p>
+    Fork the repository, personalize these fields, then download your
+    1500 × 500 X/Twitter banner.
+  </p>
 
-<div class="grid">
+  <div class="grid">
 
-<section class="panel">
+    <section class="panel">
 
-<label for="name">NAME</label>
-<input id="name" value="YOUR NAME" maxlength="32">
+      <label for="name">NAME</label>
+      <input id="name" value="YOUR NAME">
 
-<label for="username">USERNAME</label>
-<input id="username" value="@YOUR_USERNAME" maxlength="32">
+      <label for="username">USERNAME</label>
+      <input id="username" value="@YOUR_USERNAME">
 
-<label for="location">LOCATION</label>
-<input id="location" value="YOUR CITY" maxlength="28">
+      <label for="location">LOCATION</label>
+      <input id="location" value="YOUR CITY">
 
-<label for="chapter">CHAPTER</label>
-<input id="chapter" value="YOUR CHAPTER" maxlength="28">
+      <label for="chapter">CHAPTER</label>
+      <input id="chapter" value="YOUR CHAPTER">
 
-<label for="country">COUNTRY FLAG</label>
+      <label for="flag">FLAG</label>
+      <select id="flag">
+        <option value="">Choose Flag</option>
+      </select>
 
-<select id="country" autocomplete="off">
+      <button id="download">
+        DOWNLOAD 1500 × 500 PNG
+      </button>
 
-<option value="" selected>Choose flag</option>
+      <button id="reset">
+        RESET
+      </button>
 
-<option value="af">Afghanistan</option>
-<option value="al">Albania</option>
-<option value="dz">Algeria</option>
-<option value="ad">Andorra</option>
-<option value="ao">Angola</option>
-<option value="ar">Argentina</option>
-<option value="am">Armenia</option>
-<option value="au">Australia</option>
-<option value="at">Austria</option>
-<option value="az">Azerbaijan</option>
+      <div class="hint">
+        The artwork remains fixed; only your personal/community fields are editable.
+        The flag is optional.
+      </div>
 
-<option value="bs">Bahamas</option>
-<option value="bh">Bahrain</option>
-<option value="bd">Bangladesh</option>
-<option value="bb">Barbados</option>
-<option value="by">Belarus</option>
-<option value="be">Belgium</option>
-<option value="bz">Belize</option>
-<option value="bj">Benin</option>
-<option value="bt">Bhutan</option>
-<option value="bo">Bolivia</option>
-<option value="ba">Bosnia and Herzegovina</option>
-<option value="bw">Botswana</option>
-<option value="br">Brazil</option>
-<option value="bn">Brunei</option>
-<option value="bg">Bulgaria</option>
-<option value="bf">Burkina Faso</option>
-<option value="bi">Burundi</option>
+    </section>
 
-<option value="kh">Cambodia</option>
-<option value="cm">Cameroon</option>
-<option value="ca">Canada</option>
-<option value="cl">Chile</option>
-<option value="cn">China</option>
-<option value="co">Colombia</option>
-<option value="cr">Costa Rica</option>
-<option value="hr">Croatia</option>
-<option value="cu">Cuba</option>
-<option value="cy">Cyprus</option>
-<option value="cz">Czech Republic</option>
+    <section class="panel">
+      <canvas id="canvas" width="1500" height="500"></canvas>
+    </section>
 
-<option value="dk">Denmark</option>
-<option value="do">Dominican Republic</option>
-
-<option value="ec">Ecuador</option>
-<option value="eg">Egypt</option>
-<option value="sv">El Salvador</option>
-<option value="ee">Estonia</option>
-<option value="et">Ethiopia</option>
-
-<option value="fi">Finland</option>
-<option value="fr">France</option>
-
-<option value="ge">Georgia</option>
-<option value="de">Germany</option>
-<option value="gh">Ghana</option>
-<option value="gr">Greece</option>
-<option value="gt">Guatemala</option>
-
-<option value="hn">Honduras</option>
-<option value="hu">Hungary</option>
-
-<option value="is">Iceland</option>
-<option value="in">India</option>
-<option value="id">Indonesia</option>
-<option value="ir">Iran</option>
-<option value="iq">Iraq</option>
-<option value="ie">Ireland</option>
-<option value="il">Israel</option>
-<option value="it">Italy</option>
-
-<option value="jp">Japan</option>
-<option value="jo">Jordan</option>
-
-<option value="kz">Kazakhstan</option>
-<option value="ke">Kenya</option>
-<option value="kr">South Korea</option>
-<option value="kw">Kuwait</option>
-<option value="kg">Kyrgyzstan</option>
-
-<option value="lv">Latvia</option>
-<option value="lb">Lebanon</option>
-<option value="lt">Lithuania</option>
-<option value="lu">Luxembourg</option>
-
-<option value="my">Malaysia</option>
-<option value="mt">Malta</option>
-<option value="mx">Mexico</option>
-<option value="md">Moldova</option>
-<option value="mc">Monaco</option>
-<option value="mn">Mongolia</option>
-<option value="me">Montenegro</option>
-<option value="ma">Morocco</option>
-
-<option value="np">Nepal</option>
-<option value="nl">Netherlands</option>
-<option value="nz">New Zealand</option>
-<option value="ng">Nigeria</option>
-<option value="mk">North Macedonia</option>
-<option value="no">Norway</option>
-
-<option value="om">Oman</option>
-
-<option value="pk">Pakistan</option>
-<option value="pa">Panama</option>
-<option value="py">Paraguay</option>
-<option value="pe">Peru</option>
-<option value="ph">Philippines</option>
-<option value="pl">Poland</option>
-<option value="pt">Portugal</option>
-
-<option value="qa">Qatar</option>
-
-<option value="ro">Romania</option>
-<option value="ru">Russia</option>
-
-<option value="sa">Saudi Arabia</option>
-<option value="rs">Serbia</option>
-<option value="sg">Singapore</option>
-<option value="sk">Slovakia</option>
-<option value="si">Slovenia</option>
-<option value="za">South Africa</option>
-<option value="es">Spain</option>
-<option value="lk">Sri Lanka</option>
-<option value="se">Sweden</option>
-<option value="ch">Switzerland</option>
-
-<option value="tw">Taiwan</option>
-<option value="th">Thailand</option>
-<option value="tn">Tunisia</option>
-<option value="tr">Türkiye</option>
-
-<option value="ua">Ukraine</option>
-<option value="ae">United Arab Emirates</option>
-<option value="gb">United Kingdom</option>
-<option value="us">United States</option>
-<option value="uy">Uruguay</option>
-<option value="uz">Uzbekistan</option>
-
-<option value="ve">Venezuela</option>
-<option value="vn">Vietnam</option>
-
-<option value="zw">Zimbabwe</option>
-
-</select>
-
-<button id="download">
-DOWNLOAD 1500 × 500 PNG
-</button>
-
-<button id="reset">
-RESET
-</button>
-
-<div class="hint">
-The artwork remains fixed. Only your personal/community
-fields are editable.
-</div>
-
-</section>
-
-<section class="panel">
-<canvas id="canvas" width="1500" height="500"></canvas>
-</section>
-
-</div>
+  </div>
 </div>
 
 <script>
 
-const canvas =
-  document.getElementById("canvas");
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
-const ctx =
-  canvas.getContext("2d");
+const img = new Image();
+img.src = 'assets/banner-base.png';
 
-const img =
-  new Image();
-
-img.src =
-  "assets/banner-base.png";
-
-
-/* =====================================================
-   DEFAULT VALUES
-===================================================== */
+const fields = [
+  'name',
+  'username',
+  'location',
+  'chapter'
+];
 
 const defaults = {
-  name: "YOUR NAME",
-  username: "@YOUR_USERNAME",
-  location: "YOUR CITY",
-  chapter: "YOUR CHAPTER",
-  country: ""
+  name: 'YOUR NAME',
+  username: '@YOUR_USERNAME',
+  location: 'YOUR CITY',
+  chapter: 'YOUR CHAPTER'
 };
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
-
-const nameInput =
-  document.getElementById("name");
-
-const usernameInput =
-  document.getElementById("username");
-
-const locationInput =
-  document.getElementById("location");
-
-const chapterInput =
-  document.getElementById("chapter");
-
-const countrySelect =
-  document.getElementById("country");
-
-
-/* =====================================================
-   IMPORTANT:
-   FLAG STARTS EMPTY
-===================================================== */
-
-countrySelect.selectedIndex = 0;
-countrySelect.value = "";
-
-
-/* =====================================================
-   TEXT POSITIONS
-   MOVED LEFT TO SIT CLOSER TO LABELS
-===================================================== */
-
-const slots = {
-
-  name: {
-    x: 1305,
-    y: 245,
-    maxWidth: 105
-  },
-
-  username: {
-    x: 1305,
-    y: 288,
-    maxWidth: 105
-  },
-
-  location: {
-    x: 1305,
-    y: 332,
-    maxWidth: 105
-  },
-
-  chapter: {
-    x: 1305,
-    y: 376,
-    maxWidth: 95
-  }
-
-};
-
-
-/* =====================================================
-   FLAG POSITION
-===================================================== */
-
-const flagSlot = {
-  x: 1420,
-  y: 376,
-  width: 28,
-  height: 19
-};
-
-
-/* =====================================================
-   FONT
-===================================================== */
-
-const FONT_FAMILY =
-  '"Arial", "Helvetica Neue", sans-serif';
-
-
-/* =====================================================
-   FLAG CACHE
-===================================================== */
-
-const flagCache = {};
-
-
-/* =====================================================
-   FIT TEXT
-===================================================== */
-
-function fitText(text, maxWidth, baseSize) {
-
-  let size = baseSize;
-
-  while (size >= 9) {
-
-    ctx.font =
-      `800 ${size}px ${FONT_FAMILY}`;
-
-    if (
-      ctx.measureText(text).width <= maxWidth
-    ) {
-      return {
-        text,
-        size
-      };
-    }
-
-    size -= 0.5;
-  }
-
-  ctx.font =
-    `800 9px ${FONT_FAMILY}`;
-
-  let shortened = text;
-
-  while (
-    shortened.length > 3 &&
-    ctx.measureText(shortened + "…").width > maxWidth
-  ) {
-    shortened =
-      shortened.slice(0, -1);
-  }
-
-  return {
-    text: shortened + "…",
-    size: 9
-  };
-}
-
-
-/* =====================================================
-   DRAW BASE IMAGE
-===================================================== */
-
-function drawBaseImage() {
-
-  const canvasRatio =
-    canvas.width / canvas.height;
-
-  const imageRatio =
-    img.width / img.height;
-
-  let drawWidth;
-  let drawHeight;
-  let offsetX;
-  let offsetY;
-
-  if (imageRatio > canvasRatio) {
-
-    drawHeight =
-      canvas.height;
-
-    drawWidth =
-      drawHeight * imageRatio;
-
-    offsetX =
-      (canvas.width - drawWidth) / 2;
-
-    offsetY = 0;
-
-  } else {
-
-    drawWidth =
-      canvas.width;
-
-    drawHeight =
-      drawWidth / imageRatio;
-
-    offsetX = 0;
-
-    offsetY =
-      (canvas.height - drawHeight) / 2;
-  }
-
-  ctx.drawImage(
-    img,
-    offsetX,
-    offsetY,
-    drawWidth,
-    drawHeight
-  );
-}
-
-
-/* =====================================================
-   USERNAME
-===================================================== */
-
-function normalizeUsername(value) {
-
-  value =
-    value.trim();
-
-  if (!value) {
-    return defaults.username;
-  }
-
-  if (!value.startsWith("@")) {
-    value =
-      "@" + value;
-  }
-
-  return value;
-}
-
-
-/* =====================================================
-   DRAW TEXT FIELD
-===================================================== */
-
-function drawField(id) {
-
-  const slot =
-    slots[id];
-
-  if (!slot) return;
-
-  let value =
-    document.getElementById(id).value.trim();
-
-  if (!value) {
-    value =
-      defaults[id];
-  }
-
-  if (id === "username") {
-    value =
-      normalizeUsername(value);
-  }
-
-  const fitted =
-    fitText(
-      value,
-      slot.maxWidth,
-      14
-    );
-
-  ctx.font =
-    `800 ${fitted.size}px ${FONT_FAMILY}`;
-
-  ctx.fillStyle =
-    "#182b54";
-
-  ctx.textBaseline =
-    "middle";
-
-  ctx.textAlign =
-    "left";
-
-  ctx.fillText(
-    fitted.text,
-    slot.x,
-    slot.y
-  );
-}
-
-
-/* =====================================================
-   LOAD REAL FLAG IMAGE
-===================================================== */
-
-function getFlag(code) {
-
-  if (!code) {
-    return null;
-  }
-
-  if (flagCache[code]) {
-    return flagCache[code];
-  }
-
-  const flag =
-    new Image();
-
-  /*
-    Important:
-    This allows the downloaded canvas
-    to remain usable.
-  */
-
-  flag.crossOrigin =
-    "anonymous";
-
-  flag.src =
-    `https://flagcdn.com/w40/${code}.png`;
-
-  flag.onload = () => {
-    flagCache[code] = flag;
-    draw();
-  };
-
-  flag.onerror = () => {
-    console.warn(
-      "Flag could not be loaded:",
-      code
-    );
-  };
-
-  flagCache[code] =
-    flag;
-
-  return flag;
-}
-
-
-/* =====================================================
-   DRAW FLAG
-===================================================== */
-
-function drawFlag() {
-
-  const code =
-    countrySelect.value;
-
-  /*
-    Nothing selected:
-    absolutely no flag is drawn.
-  */
-
-  if (!code) {
-    return;
-  }
-
-  const flag =
-    getFlag(code);
-
-  if (!flag) {
-    return;
-  }
-
-  if (!flag.complete || !flag.naturalWidth) {
-    return;
-  }
-
-  ctx.drawImage(
-    flag,
-    flagSlot.x,
-    flagSlot.y - flagSlot.height / 2,
-    flagSlot.width,
-    flagSlot.height
-  );
-}
-
-
-/* =====================================================
-   MAIN DRAW
-===================================================== */
-
-function draw() {
-
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
-
-  if (
-    img.complete &&
-    img.naturalWidth
-  ) {
-
-    drawBaseImage();
-
-  } else {
-
-    ctx.fillStyle =
-      "#ffffff";
-
-    ctx.fillRect(
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-  }
-
-  drawField("name");
-
-  drawField("username");
-
-  drawField("location");
-
-  drawField("chapter");
-
-  drawFlag();
-}
-
-
-/* =====================================================
-   IMAGE LOAD
-===================================================== */
-
-img.onload = () => {
-  draw();
-};
-
-
-/* =====================================================
-   INPUT EVENTS
-===================================================== */
-
-[
-  nameInput,
-  usernameInput,
-  locationInput,
-  chapterInput
-].forEach(element => {
-
-  element.addEventListener(
-    "input",
-    draw
-  );
+/* -------------------------------------------------------
+   COUNTRY FLAGS
+------------------------------------------------------- */
+
+const countries = [
+  ["af","Afghanistan"],
+  ["al","Albania"],
+  ["dz","Algeria"],
+  ["ad","Andorra"],
+  ["ao","Angola"],
+  ["ag","Antigua and Barbuda"],
+  ["ar","Argentina"],
+  ["am","Armenia"],
+  ["au","Australia"],
+  ["at","Austria"],
+  ["az","Azerbaijan"],
+  ["bs","Bahamas"],
+  ["bh","Bahrain"],
+  ["bd","Bangladesh"],
+  ["bb","Barbados"],
+  ["by","Belarus"],
+  ["be","Belgium"],
+  ["bz","Belize"],
+  ["bj","Benin"],
+  ["bt","Bhutan"],
+  ["bo","Bolivia"],
+  ["ba","Bosnia and Herzegovina"],
+  ["bw","Botswana"],
+  ["br","Brazil"],
+  ["bn","Brunei"],
+  ["bg","Bulgaria"],
+  ["bf","Burkina Faso"],
+  ["bi","Burundi"],
+  ["cv","Cabo Verde"],
+  ["kh","Cambodia"],
+  ["cm","Cameroon"],
+  ["ca","Canada"],
+  ["cf","Central African Republic"],
+  ["td","Chad"],
+  ["cl","Chile"],
+  ["cn","China"],
+  ["co","Colombia"],
+  ["km","Comoros"],
+  ["cg","Republic of the Congo"],
+  ["cd","Democratic Republic of the Congo"],
+  ["cr","Costa Rica"],
+  ["ci","Côte d'Ivoire"],
+  ["hr","Croatia"],
+  ["cu","Cuba"],
+  ["cy","Cyprus"],
+  ["cz","Czech Republic"],
+  ["dk","Denmark"],
+  ["dj","Djibouti"],
+  ["dm","Dominica"],
+  ["do","Dominican Republic"],
+  ["ec","Ecuador"],
+  ["eg","Egypt"],
+  ["sv","El Salvador"],
+  ["gq","Equatorial Guinea"],
+  ["er","Eritrea"],
+  ["ee","Estonia"],
+  ["sz","Eswatini"],
+  ["et","Ethiopia"],
+  ["fj","Fiji"],
+  ["fi","Finland"],
+  ["fr","France"],
+  ["ga","Gabon"],
+  ["gm","Gambia"],
+  ["ge","Georgia"],
+  ["de","Germany"],
+  ["gh","Ghana"],
+  ["gr","Greece"],
+  ["gd","Grenada"],
+  ["gt","Guatemala"],
+  ["gn","Guinea"],
+  ["gw","Guinea-Bissau"],
+  ["gy","Guyana"],
+  ["ht","Haiti"],
+  ["hn","Honduras"],
+  ["hu","Hungary"],
+  ["is","Iceland"],
+  ["in","India"],
+  ["id","Indonesia"],
+  ["ir","Iran"],
+  ["iq","Iraq"],
+  ["ie","Ireland"],
+  ["il","Israel"],
+  ["it","Italy"],
+  ["jm","Jamaica"],
+  ["jp","Japan"],
+  ["jo","Jordan"],
+  ["kz","Kazakhstan"],
+  ["ke","Kenya"],
+  ["ki","Kiribati"],
+  ["kp","North Korea"],
+  ["kr","South Korea"],
+  ["kw","Kuwait"],
+  ["kg","Kyrgyzstan"],
+  ["la","Laos"],
+  ["lv","Latvia"],
+  ["lb","Lebanon"],
+  ["ls","Lesotho"],
+  ["lr","Liberia"],
+  ["ly","Libya"],
+  ["li","Liechtenstein"],
+  ["lt","Lithuania"],
+  ["lu","Luxembourg"],
+  ["mg","Madagascar"],
+  ["mw","Malawi"],
+  ["my","Malaysia"],
+  ["mv","Maldives"],
+  ["ml","Mali"],
+  ["mt","Malta"],
+  ["mh","Marshall Islands"],
+  ["mr","Mauritania"],
+  ["mu","Mauritius"],
+  ["mx","Mexico"],
+  ["fm","Micronesia"],
+  ["md","Moldova"],
+  ["mc","Monaco"],
+  ["mn","Mongolia"],
+  ["me","Montenegro"],
+  ["ma","Morocco"],
+  ["mz","Mozambique"],
+  ["mm","Myanmar"],
+  ["na","Namibia"],
+  ["nr","Nauru"],
+  ["np","Nepal"],
+  ["nl","Netherlands"],
+  ["nz","New Zealand"],
+  ["ni","Nicaragua"],
+  ["ne","Niger"],
+  ["ng","Nigeria"],
+  ["mk","North Macedonia"],
+  ["no","Norway"],
+  ["om","Oman"],
+  ["pk","Pakistan"],
+  ["pw","Palau"],
+  ["pa","Panama"],
+  ["pg","Papua New Guinea"],
+  ["py","Paraguay"],
+  ["pe","Peru"],
+  ["ph","Philippines"],
+  ["pl","Poland"],
+  ["pt","Portugal"],
+  ["qa","Qatar"],
+  ["ro","Romania"],
+  ["ru","Russia"],
+  ["rw","Rwanda"],
+  ["kn","Saint Kitts and Nevis"],
+  ["lc","Saint Lucia"],
+  ["vc","Saint Vincent and the Grenadines"],
+  ["ws","Samoa"],
+  ["sm","San Marino"],
+  ["st","São Tomé and Príncipe"],
+  ["sa","Saudi Arabia"],
+  ["sn","Senegal"],
+  ["rs","Serbia"],
+  ["sc","Seychelles"],
+  ["sl","Sierra Leone"],
+  ["sg","Singapore"],
+  ["sk","Slovakia"],
+  ["si","Slovenia"],
+  ["sb","Solomon Islands"],
+  ["so","Somalia"],
+  ["za","South Africa"],
+  ["ss","South Sudan"],
+  ["es","Spain"],
+  ["lk","Sri Lanka"],
+  ["sd","Sudan"],
+  ["sr","Suriname"],
+  ["se","Sweden"],
+  ["ch","Switzerland"],
+  ["sy","Syria"],
+  ["tj","Tajikistan"],
+  ["tz","Tanzania"],
+  ["th","Thailand"],
+  ["tl","Timor-Leste"],
+  ["tg","Togo"],
+  ["to","Tonga"],
+  ["tt","Trinidad and Tobago"],
+  ["tn","Tunisia"],
+  ["tr","Turkey"],
+  ["tm","Turkmenistan"],
+  ["tv","Tuvalu"],
+  ["ug","Uganda"],
+  ["ua","Ukraine"],
+  ["ae","United Arab Emirates"],
+  ["gb","United Kingdom"],
+  ["us","United States"],
+  ["uy","Uruguay"],
+  ["uz","Uzbekistan"],
+  ["vu","Vanuatu"],
+  ["va","Vatican City"],
+  ["ve","Venezuela"],
+  ["vn","Vietnam"],
+  ["ye","Yemen"],
+  ["zm","Zambia"],
+  ["zw","Zimbabwe"]
+];
+
+const flagSelect = document.getElementById('flag');
+
+countries.forEach(([code, name]) => {
+
+  const option = document.createElement('option');
+
+  option.value = code;
+  option.textContent = name;
+
+  flagSelect.appendChild(option);
 
 });
 
 
-/* =====================================================
-   COUNTRY EVENT
-===================================================== */
+/* -------------------------------------------------------
+   TEXT FITTING
+------------------------------------------------------- */
 
-countrySelect.addEventListener(
-  "change",
-  () => {
+function fitText(text, maxWidth, font) {
 
-    const code =
-      countrySelect.value;
+  ctx.font = font;
 
-    if (code) {
-      getFlag(code);
+  if (ctx.measureText(text).width <= maxWidth) {
+    return text;
+  }
+
+  let s = text;
+
+  while (
+    s.length > 3 &&
+    ctx.measureText(s + '…').width > maxWidth
+  ) {
+    s = s.slice(0, -1);
+  }
+
+  return s + '…';
+}
+
+
+/* -------------------------------------------------------
+   FLAG IMAGE
+------------------------------------------------------- */
+
+let flagImage = null;
+let flagCode = '';
+
+function loadFlag(code) {
+
+  flagImage = null;
+  flagCode = code;
+
+  if (!code) {
+    draw();
+    return;
+  }
+
+  const image = new Image();
+
+  image.crossOrigin = 'anonymous';
+
+  image.onload = function() {
+    flagImage = image;
+    draw();
+  };
+
+  image.onerror = function() {
+    flagImage = null;
+    draw();
+  };
+
+  image.src =
+    'https://flagcdn.com/w40/' +
+    code +
+    '.png';
+}
+
+
+/* -------------------------------------------------------
+   DRAW
+------------------------------------------------------- */
+
+function draw() {
+
+  ctx.clearRect(0, 0, 1500, 500);
+
+  ctx.drawImage(
+    img,
+    0,
+    0,
+    1500,
+    500
+  );
+
+
+  /*
+    These coordinates correspond to the current
+    1500 × 500 banner.
+  */
+
+  const slots = [
+
+    {
+      id: 'name',
+      x: 1308,
+      y: 246,
+      max: 120
+    },
+
+    {
+      id: 'username',
+      x: 1308,
+      y: 294,
+      max: 120
+    },
+
+    {
+      id: 'location',
+      x: 1308,
+      y: 342,
+      max: 120
+    },
+
+    {
+      id: 'chapter',
+      x: 1308,
+      y: 390,
+      max: 105
     }
 
-    draw();
+  ];
+
+
+  /*
+    ARC-compatible font.
+    Bold and centered inside the value area.
+  */
+
+  ctx.fillStyle = '#182b54';
+
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'center';
+
+  for (const slot of slots) {
+
+    const value =
+      document.getElementById(slot.id).value.trim()
+      || defaults[slot.id];
+
+    const font =
+      '700 15px Inter, Arial, sans-serif';
+
+    const clipped =
+      fitText(
+        value,
+        slot.max,
+        font
+      );
+
+    ctx.font = font;
+
+    ctx.fillStyle = '#182b54';
+
+    ctx.fillText(
+      clipped,
+      slot.x,
+      slot.y
+    );
+  }
+
+
+  /* ---------------------------------------------------
+     FLAG
+     
+     ONLY THIS POSITION HAS BEEN CHANGED.
+
+     Chapter box:
+       left  ≈ 1175
+       right ≈ 1435
+
+     Flag:
+       width  = 24
+       right padding = 10
+
+     Therefore the flag ends at x ≈ 1425,
+     safely inside the right border.
+  --------------------------------------------------- */
+
+  if (flagImage) {
+
+    const flagWidth = 24;
+    const flagHeight = 16;
+
+    const chapterBoxRight = 1435;
+    const rightPadding = 10;
+
+    const flagX =
+      chapterBoxRight -
+      rightPadding -
+      flagWidth;
+
+    const flagY =
+      390 -
+      flagHeight / 2;
+
+    ctx.drawImage(
+      flagImage,
+      flagX,
+      flagY,
+      flagWidth,
+      flagHeight
+    );
+  }
+
+}
+
+
+/* -------------------------------------------------------
+   EVENTS
+------------------------------------------------------- */
+
+img.onload = function() {
+  draw();
+};
+
+
+fields.forEach(id => {
+
+  document
+    .getElementById(id)
+    .addEventListener(
+      'input',
+      draw
+    );
+
+});
+
+
+flagSelect.addEventListener(
+  'change',
+  function() {
+
+    loadFlag(this.value);
 
   }
 );
 
 
-/* =====================================================
+/* -------------------------------------------------------
    DOWNLOAD
-===================================================== */
+------------------------------------------------------- */
 
 document
-  .getElementById("download")
-  .addEventListener(
-    "click",
-    () => {
+  .getElementById('download')
+  .addEventListener('click', function() {
 
-      const link =
-        document.createElement("a");
+    try {
 
-      link.download =
-        "arc-community-banner-1500x500.png";
+      const a =
+        document.createElement('a');
 
-      link.href =
-        canvas.toDataURL("image/png");
+      a.download =
+        'arc-community-banner-1500x500.png';
 
-      link.click();
+      a.href =
+        canvas.toDataURL('image/png');
+
+      document.body.appendChild(a);
+
+      a.click();
+
+      document.body.removeChild(a);
+
+    } catch (error) {
+
+      alert(
+        'The banner could not be downloaded. Please select the flag again and try once more.'
+      );
+
+      console.error(error);
 
     }
-  );
+
+  });
 
 
-/* =====================================================
+/* -------------------------------------------------------
    RESET
-===================================================== */
+------------------------------------------------------- */
 
 document
-  .getElementById("reset")
-  .addEventListener(
-    "click",
-    () => {
+  .getElementById('reset')
+  .addEventListener('click', function() {
 
-      nameInput.value =
-        defaults.name;
+    fields.forEach(id => {
 
-      usernameInput.value =
-        defaults.username;
+      document
+        .getElementById(id)
+        .value = defaults[id];
 
-      locationInput.value =
-        defaults.location;
+    });
 
-      chapterInput.value =
-        defaults.chapter;
+    flagSelect.value = '';
 
-      /*
-        Flag completely reset.
-      */
+    flagImage = null;
+    flagCode = '';
 
-      countrySelect.selectedIndex = 0;
-      countrySelect.value = "";
+    draw();
 
-      draw();
-
-    }
-  );
+  });
 
 
-/* =====================================================
-   INITIAL STATE
-===================================================== */
+/* -------------------------------------------------------
+   INITIAL DRAW
+------------------------------------------------------- */
 
-countrySelect.selectedIndex = 0;
-countrySelect.value = "";
-
-draw();
+if (img.complete) {
+  draw();
+}
 
 </script>
 
